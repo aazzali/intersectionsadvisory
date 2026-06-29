@@ -1,4 +1,3 @@
-HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,7 +52,23 @@ HTML
         .nav-links a { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--secondary); text-decoration: none; transition: color 0.2s; }
         .nav-links a:hover { color: var(--accent); }
 
-        /* HERO AREA WITH BANYAN */
+        /* HIDDEN MOBILE DROPDOWN SELECT MENU BY DEFAULT */
+        .mobile-nav-select {
+            display: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--secondary);
+            background: var(--surface);
+            border: 1px solid var(--divider);
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            outline: none;
+        }
+
+        /* MAIN CONTENT AREA WITH BANYAN SILHOUETTE */
         .main-content { 
             position: relative; 
             overflow: hidden; 
@@ -95,10 +110,11 @@ HTML
         .footer-mark { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--secondary); }
         .footer-copy { font-size: 0.72rem; color: var(--secondary); }
 
-        /* MOBILE */
+        /* MOBILE MEDIA QUERIES */
         @media (max-width: 768px) {
             .container { padding: 0 1.5rem; }
-            .nav-links { display: none; }
+            .nav-links { display: none; } /* Hide the plain text line on mobile */
+            .mobile-nav-select { display: block; } /* Reveal mobile option menu instead */
             .main-content { padding: 5rem 0; }
             .hero-banyan { height: 90%; right: -20%; bottom: -10%; opacity: 0.06; }
             .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
@@ -115,12 +131,23 @@ HTML
                 <span class="nav-cross">+</span>
                 <span class="nav-name">Intersections Advisory</span>
             </a>
+            
             <ul class="nav-links">
                 <li><a href="index.html#services">Services</a></li>
                 <li><a href="index.html#about">About</a></li>
                 <li><a href="index.html#together">Together</a></li>
+                <li><a href="articles.html">Articles</a></li>
                 <li><a href="#">Contacts</a></li>
             </ul>
+
+            <select class="mobile-nav-select" onchange="location = this.value;">
+                <option value="" disabled selected>Menu</option>
+                <option value="index.html#services">Services</option>
+                <option value="index.html#about">About</option>
+                <option value="index.html#together">Together</option>
+                <option value="articles.html">Articles</option>
+                <option value="contact.html">Contacts</option>
+            </select>
         </div>
     </div>
 </nav>
