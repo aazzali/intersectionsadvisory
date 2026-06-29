@@ -1,3 +1,10 @@
+My apologies on that color hex front! It turns out I left the background color variables pointing to the soft gray-stone palette in that file instead of applying a true green background tincture.
+
+Let's use your beautiful **`#B6EBC0`** hex code to bathe the canvas in a gorgeous, radiant light green tint.
+
+Here is the fully refreshed code for **`contact.html`** including your green tone choice and the fully active native mobile dropdown bar setup:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,18 +14,19 @@
     <meta name="description" content="Contact Intersections Advisory for senior technical consulting in child protection, migration, and humanitarian action.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Galatia:ital,wght=0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Galatia:ital,wght=0,400;0,500;1,400;1,500&family=Inter:wght=300;400;500;600&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
-            --bg:           #F8F9F6;
-            --surface:      #EFEFEA;
-            --text:         #1A1C19;
-            --accent:       #556B2F; /* Light Forest Green */
-            --accent-hover: #3E4F22;
-            --secondary:    #6E726A;
-            --divider:      #D4D9CE;
+            /* Updated with your requested crisp green background tint */
+            --bg:           #B6EBC0; 
+            --surface:      #A1DFA9; /* Harmonized deeper leaf surface */
+            --text:         #102A16; /* Clean deep green-black for striking text readability */
+            --accent:       #2A5934; /* Dark Forest accents */
+            --accent-hover: #1A3A21;
+            --secondary:    #43634B; /* Muted sage-tone for context tags */
+            --divider:      #93CE9E; /* Balanced border division lines */
         }
 
         html { scroll-behavior: smooth; }
@@ -52,19 +60,19 @@
         .nav-links a { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--secondary); text-decoration: none; transition: color 0.2s; }
         .nav-links a:hover { color: var(--accent); }
 
-        /* HIDDEN MOBILE DROPDOWN SELECT MENU BY DEFAULT */
+        /* MOBILE DROPDOWN COMPONENT */
         .mobile-nav-select {
             display: none;
             font-family: 'Inter', sans-serif;
             font-size: 0.75rem;
-            font-weight: 500;
+            font-weight: 600;
             letter-spacing: 0.05em;
             text-transform: uppercase;
-            color: var(--secondary);
+            color: var(--text);
             background: var(--surface);
-            border: 1px solid var(--divider);
-            padding: 0.4rem 0.8rem;
-            border-radius: 4px;
+            border: 1px solid var(--accent);
+            padding: 0.45rem 0.8rem;
+            border-radius: 3px;
             outline: none;
         }
 
@@ -84,7 +92,7 @@
             bottom: -5%;
             height: 115%;
             width: auto;
-            opacity: 0.11;
+            opacity: 0.14;
             pointer-events: none;
             user-select: none;
         }
@@ -101,8 +109,8 @@
         .contact-item { margin-bottom: 2.2rem; }
         .contact-item:last-child { margin-bottom: 0; }
         .contact-item-label { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.45rem; }
-        .contact-item a { font-size: 1.15rem; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--divider); padding-bottom: 0.15rem; transition: color 0.2s, border-color 0.2s; font-family: 'Inter', sans-serif; font-weight: 400; }
-        .contact-item a:hover { color: var(--accent); border-color: var(--accent); }
+        .contact-item a { font-size: 1.15rem; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: 0.15rem; transition: color 0.2s, border-color 0.2s; font-family: 'Inter', sans-serif; font-weight: 500; }
+        .contact-item a:hover { color: var(--accent-hover); border-color: var(--text); }
 
         /* FOOTER */
         footer { padding: 1.75rem 0; border-top: 1px solid var(--divider); background: var(--bg); }
@@ -110,13 +118,13 @@
         .footer-mark { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--secondary); }
         .footer-copy { font-size: 0.72rem; color: var(--secondary); }
 
-        /* MOBILE MEDIA QUERIES */
+        /* RESPONSIVE SCALING */
         @media (max-width: 768px) {
             .container { padding: 0 1.5rem; }
-            .nav-links { display: none; } /* Hide the plain text line on mobile */
-            .mobile-nav-select { display: block; } /* Reveal mobile option menu instead */
+            .nav-links { display: none; }
+            .mobile-nav-select { display: block; }
             .main-content { padding: 5rem 0; }
-            .hero-banyan { height: 90%; right: -20%; bottom: -10%; opacity: 0.06; }
+            .hero-banyan { height: 90%; right: -20%; bottom: -10%; opacity: 0.08; }
             .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
             .footer-inner { flex-direction: column; gap: 0.4rem; text-align: center; }
         }
@@ -124,6 +132,7 @@
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
     <div class="container">
         <div class="nav-inner">
@@ -132,6 +141,7 @@
                 <span class="nav-name">Intersections Advisory</span>
             </a>
             
+            <!-- Links for Larger Screens -->
             <ul class="nav-links">
                 <li><a href="index.html#services">Services</a></li>
                 <li><a href="index.html#about">About</a></li>
@@ -140,6 +150,7 @@
                 <li><a href="#">Contacts</a></li>
             </ul>
 
+            <!-- Adaptive Mobile Dropdown Toggler -->
             <select class="mobile-nav-select" onchange="location = this.value;">
                 <option value="" disabled selected>Menu</option>
                 <option value="index.html#services">Services</option>
@@ -152,10 +163,11 @@
     </div>
 </nav>
 
+<!-- MAIN CONTENT AREA WITH BANYAN SILHOUETTE -->
 <main class="main-content">
 
     <svg class="hero-banyan" viewBox="0 0 500 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <g fill="#556B2F" stroke="#556B2F" stroke-linecap="round" stroke-linejoin="round">
+      <g fill="#2A5934" stroke="#2A5934" stroke-linecap="round" stroke-linejoin="round">
         <path fill="none" stroke-width="28" d="M 230 600 C 235 520 200 440 210 380 C 220 330 250 290 250 240"/>
         <path fill="none" stroke-width="18" d="M 180 600 C 190 530 210 480 210 380"/>
         <path fill="none" stroke-width="16" d="M 280 600 C 270 540 240 490 250 380 C 255 330 280 290 290 250"/>
@@ -200,6 +212,7 @@
     </div>
 </main>
 
+<!-- FOOTER -->
 <footer>
     <div class="container">
         <div class="footer-inner">
@@ -211,3 +224,5 @@
 
 </body>
 </html>
+
+```
