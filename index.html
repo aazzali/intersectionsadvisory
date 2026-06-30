@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intersections Advisory</title>
+    <meta name="description" content="Senior technical consulting at the intersection of child protection, migration, and humanitarian action.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Galatia:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg:           #D8EBF5;
+            --surface:      #C5DFF0;
+            --text:         #1C1C1A;
+            --accent:       #3A7A9E;
+            --accent-hover: #2A5A7A;
+            --secondary:    #5A6E7A;
+            --divider:      #A8C8E0;
+        }
+
+        html { scroll-behavior: smooth; }
+        body { background: var(--bg); color: var(--text); font-family: 'Inter', system-ui, sans-serif; font-weight: 400; line-height: 1.6; font-size: 16px; }
+        .container { max-width: 1080px; margin: 0 auto; padding: 0 2.5rem; }
+
+        /* NAV */
+        nav { padding: 1.75rem 0; border-bottom: 1px solid var(--divider); position: sticky; top: 0; background: var(--bg); z-index: 100; }
+        .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+        .nav-mark { display: flex; align-items: center; gap: 0.65rem; text-decoration: none; }
+        .nav-cross { font-size: 1.1rem; color: var(--accent); font-weight: 300; line-height: 1; }
+        .nav-name { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text); }
+        .nav-links { list-style: none; display: flex; gap: 2rem; }
+        .nav-links > li { position: relative; }
+        .nav-links a { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--secondary); text-decoration: none; transition: color 0.2s; display: block; padding: 0.25rem 0; }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+        .nav-links .has-dropdown > a::after { content: ' ▾'; font-size: 0.6rem; }
+        .dropdown { display: none; position: absolute; top: 100%; left: 0; background: var(--bg); border: 1px solid var(--divider); min-width: 160px; padding: 0.5rem 0; z-index: 200; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+        .dropdown a { padding: 0.5rem 1rem; white-space: nowrap; }
+        .has-dropdown:hover .dropdown { display: block; }
+
+        hr.rule { border: none; border-top: 1px solid var(--divider); }
+        .section-label { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 3rem; display: flex; align-items: center; gap: 0.9rem; }
+        .section-label::after { content: ''; display: block; height: 1px; width: 2.5rem; background: var(--accent); opacity: 0.4; }
+
+        /* HERO */
+        .hero { position: relative; overflow: hidden; padding: 7rem 0 6rem; }
+        .hero > .container { position: relative; z-index: 1; }
+        .hero-frangipani { position: absolute; right: -5%; bottom: -10%; height: 160%; width: auto; opacity: 0.20; pointer-events: none; user-select: none; }
+        .hero-eyebrow { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 2.25rem; }
+        .hero-headline { font-family: 'Cormorant Galatia', Georgia, serif; font-size: clamp(2.8rem, 6vw, 5.2rem); font-weight: 400; line-height: 1.08; color: var(--text); max-width: 780px; margin-bottom: 2.5rem; }
+        .hero-headline em { font-style: italic; color: var(--accent); }
+        .hero-sub { font-size: 0.9375rem; color: var(--secondary); max-width: 540px; line-height: 1.75; margin-bottom: 2.75rem; }
+        .hero-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .tag { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--secondary); border: 1px solid var(--divider); padding: 0.3rem 0.85rem; border-radius: 2px; background: rgba(255,255,255,0.3); }
+
+        /* SERVICES */
+        #services { padding: 5rem 0; background: var(--surface); }
+        .services-grid { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--divider); }
+        .service-card { padding: 2.5rem; border-right: 1px solid var(--divider); border-bottom: 1px solid var(--divider); background: rgba(255,255,255,0.25); }
+        .service-card:nth-child(2), .service-card:nth-child(4) { border-right: none; }
+        .service-card:nth-child(3), .service-card:nth-child(4) { border-bottom: none; }
+        .service-num { font-family: 'Cormorant Galatia', serif; font-size: 2.2rem; font-weight: 400; color: var(--divider); line-height: 1; margin-bottom: 1.4rem; }
+        .service-title { font-family: 'Cormorant Galatia', serif; font-size: 1.45rem; font-weight: 500; color: var(--text); margin-bottom: 0.65rem; line-height: 1.2; }
+        .service-desc { font-size: 0.875rem; color: var(--secondary); line-height: 1.72; }
+
+        /* ABOUT */
+        #about { padding: 5rem 0; }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+        .about-left h2 { font-family: 'Cormorant Galatia', serif; font-size: clamp(1.8rem, 3.5vw, 3.2rem); font-weight: 400; line-height: 1.15; }
+        .about-right p { font-size: 0.9rem; color: var(--secondary); line-height: 1.82; margin-bottom: 1.2rem; }
+        .about-right p:last-child { margin-bottom: 0; }
+        .about-right strong { color: var(--text); font-weight: 500; }
+
+        /* TOGETHER */
+        #together { padding: 5rem 0; background: var(--surface); }
+        .together-intro { max-width: 580px; margin-bottom: 3.5rem; }
+        .together-intro h2 { font-family: 'Cormorant Galatia', serif; font-size: clamp(1.7rem, 3vw, 2.8rem); font-weight: 400; line-height: 1.2; margin-bottom: 0.9rem; }
+        .together-intro p { font-size: 0.9rem; color: var(--secondary); line-height: 1.78; }
+        .profiles-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 3rem; }
+        .profile-card { background: rgba(255,255,255,0.35); padding: 2.5rem; }
+        .profile-name { font-family: 'Cormorant Galatia', serif; font-size: 1.55rem; font-weight: 500; margin-bottom: 0.2rem; }
+        .profile-role { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.1rem; }
+        .profile-bio { font-size: 0.875rem; color: var(--secondary); line-height: 1.75; }
+        .combined-value { border-top: 1px solid var(--divider); padding-top: 3rem; }
+        .combined-value h3 { font-family: 'Cormorant Galatia', serif; font-size: 1.35rem; font-weight: 500; margin-bottom: 1.5rem; }
+        .value-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; list-style: none; }
+        .value-list li { font-size: 0.875rem; color: var(--secondary); line-height: 1.68; padding-left: 1rem; border-left: 2px solid var(--accent); }
+
+        footer { padding: 1.75rem 0; border-top: 1px solid var(--divider); }
+        .footer-inner { display: flex; justify-content: space-between; align-items: center; }
+        .footer-mark { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--secondary); }
+        .footer-copy { font-size: 0.72rem; color: var(--secondary); }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 1.5rem; }
+            .nav-links { display: none; }
+            .hero { padding: 4rem 0 3.5rem; }
+            .hero-frangipani { height: 90%; opacity: 0.15; }
+            .services-grid { grid-template-columns: 1fr; }
+            .service-card { border-right: none !important; border-bottom: 1px solid var(--divider) !important; }
+            .service-card:last-child { border-bottom: none !important; }
+            .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .profiles-grid { grid-template-columns: 1fr; }
+            .value-list { grid-template-columns: 1fr; }
+            .footer-inner { flex-direction: column; gap: 0.4rem; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="container">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-mark">
+                <span class="nav-cross">+</span>
+                <span class="nav-name">Intersections Advisory</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li class="has-dropdown">
+                    <a href="#">Portfolio</a>
+                    <ul class="dropdown">
+                        <li><a href="amanda.html">Amanda</a></li>
+                        <li><a href="david.html">David</a></li>
+                    </ul>
+                </li>
+                <li><a href="articles.html">Articles</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<section class="hero">
+    <svg class="hero-frangipani" viewBox="0 0 420 680" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g fill="#3A7A9E" stroke="#3A7A9E" stroke-linecap="round" stroke-linejoin="round">
+        <path fill="none" stroke-width="20" d="M 95 680 C 108 620 122 558 138 496 C 152 438 162 382 168 328 C 172 295 173 268 172 245"/>
+        <path fill="none" stroke-width="13" d="M 172 245 C 160 218 145 192 128 168 C 114 148 98 128 82 105"/>
+        <path fill="none" stroke-width="13" d="M 172 245 C 192 222 215 200 238 178 C 258 160 275 142 285 122"/>
+        <path fill="none" stroke-width="9"  d="M 225 205 C 252 188 278 170 302 152 C 318 140 330 128 336 114"/>
+        <path fill="none" stroke-width="8"  d="M 128 168 C 108 152 88 135 70 116 C 56 102 46 88 40 72"/>
+        <g transform="translate(68,78)">
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-9 2-14-8-12-22 C-10-33-2-38 0-38 C2-38 10-33 12-22 C14-8 9 2 0 3Z"/>
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-9 2-14-8-12-22 C-10-33-2-38 0-38 C2-38 10-33 12-22 C14-8 9 2 0 3Z" transform="rotate(72)"/>
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-9 2-14-8-12-22 C-10-33-2-38 0-38 C2-38 10-33 12-22 C14-8 9 2 0 3Z" transform="rotate(144)"/>
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-9 2-14-8-12-22 C-10-33-2-38 0-38 C2-38 10-33 12-22 C14-8 9 2 0 3Z" transform="rotate(216)"/>
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-9 2-14-8-12-22 C-10-33-2-38 0-38 C2-38 10-33 12-22 C14-8 9 2 0 3Z" transform="rotate(288)"/>
+          <circle fill="#3A7A9E" stroke="none" r="5"/>
+        </g>
+        <g transform="translate(92,68) rotate(28)">
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-9 2-14-8-12-22 C-10-33-2-38 0-38 C2-38 10-33 12-22 C14-8 9 2 0 3Z"/>
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-9 2-14-8-12-22 C-10-33-2-38 0-38 C2-38 10-33 12-22 C14-8 9 2 0 3Z" transform="rotate(72)"/>
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-9 2-14-8-12-22 C-10-33-2-38 0-38 C2-38 10-33 12-22 C14-8 9 2 0 3Z" transform="rotate(144)"/>
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-9 2-14-8-12-22 C-10-33-2-38 0-38 C2-38 10-33 12-22 C14-8 9 2 0 3Z" transform="rotate(216)"/>
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-9 2-14-8-12-22 C-10-33-2-38 0-38 C2-38 10-33 12-22 C14-8 9 2 0 3Z" transform="rotate(288)"/>
+          <circle fill="#3A7A9E" stroke="none" r="5"/>
+        </g>
+        <g transform="translate(55,95) rotate(-18)">
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-8 2-12-7-10-19 C-8-28-2-32 0-32 C2-32 8-28 10-19 C12-7 8 2 0 3Z"/>
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-8 2-12-7-10-19 C-8-28-2-32 0-32 C2-32 8-28 10-19 C12-7 8 2 0 3Z" transform="rotate(72)"/>
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-8 2-12-7-10-19 C-8-28-2-32 0-32 C2-32 8-28 10-19 C12-7 8 2 0 3Z" transform="rotate(144)"/>
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-8 2-12-7-10-19 C-8-28-2-32 0-32 C2-32 8-28 10-19 C12-7 8 2 0 3Z" transform="rotate(216)"/>
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-8 2-12-7-10-19 C-8-28-2-32 0-32 C2-32 8-28 10-19 C12-7 8 2 0 3Z" transform="rotate(288)"/>
+          <circle fill="#3A7A9E" stroke="none" r="4"/>
+        </g>
+        <path stroke="none" d="M 100 128 C 88 110 82 88 90 68 C 95 56 103 54 106 62 C 111 80 108 108 100 128Z" transform="rotate(-8,100,128)"/>
+        <path stroke="none" d="M 72 122 C 58 105 52 82 60 62 C 65 50 73 49 76 57 C 81 76 78 105 72 122Z" transform="rotate(12,72,122)"/>
+        <g transform="translate(42,62) rotate(-10)">
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-7 2-11-6-9-17 C-7-26-2-30 0-30 C2-30 7-26 9-17 C11-6 7 2 0 3Z"/>
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-7 2-11-6-9-17 C-7-26-2-30 0-30 C2-30 7-26 9-17 C11-6 7 2 0 3Z" transform="rotate(72)"/>
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-7 2-11-6-9-17 C-7-26-2-30 0-30 C2-30 7-26 9-17 C11-6 7 2 0 3Z" transform="rotate(144)"/>
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-7 2-11-6-9-17 C-7-26-2-30 0-30 C2-30 7-26 9-17 C11-6 7 2 0 3Z" transform="rotate(216)"/>
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-7 2-11-6-9-17 C-7-26-2-30 0-30 C2-30 7-26 9-17 C11-6 7 2 0 3Z" transform="rotate(288)"/>
+          <circle fill="#3A7A9E" stroke="none" r="3.5"/>
+        </g>
+        <g transform="translate(58,58) rotate(35)">
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-7 2-11-6-9-17 C-7-26-2-30 0-30 C2-30 7-26 9-17 C11-6 7 2 0 3Z"/>
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-7 2-11-6-9-17 C-7-26-2-30 0-30 C2-30 7-26 9-17 C11-6 7 2 0 3Z" transform="rotate(72)"/>
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-7 2-11-6-9-17 C-7-26-2-30 0-30 C2-30 7-26 9-17 C11-6 7 2 0 3Z" transform="rotate(144)"/>
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-7 2-11-6-9-17 C-7-26-2-30 0-30 C2-30 7-26 9-17 C11-6 7 2 0 3Z" transform="rotate(216)"/>
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-7 2-11-6-9-17 C-7-26-2-30 0-30 C2-30 7-26 9-17 C11-6 7 2 0 3Z" transform="rotate(288)"/>
+          <circle fill="#3A7A9E" stroke="none" r="3.5"/>
+        </g>
+        <path stroke="none" d="M 52 88 C 40 72 36 52 44 36 C 48 26 56 25 58 33 C 62 50 58 74 52 88Z"/>
+        <g transform="translate(275,98)">
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-9 2-14-8-12-22 C-10-33-2-38 0-38 C2-38 10-33 12-22 C14-8 9 2 0 3Z"/>
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-9 2-14-8-12-22 C-10-33-2-38 0-38 C2-38 10-33 12-22 C14-8 9 2 0 3Z" transform="rotate(72)"/>
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-9 2-14-8-12-22 C-10-33-2-38 0-38 C2-38 10-33 12-22 C14-8 9 2 0 3Z" transform="rotate(144)"/>
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-9 2-14-8-12-22 C-10-33-2-38 0-38 C2-38 10-33 12-22 C14-8 9 2 0 3Z" transform="rotate(216)"/>
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-9 2-14-8-12-22 C-10-33-2-38 0-38 C2-38 10-33 12-22 C14-8 9 2 0 3Z" transform="rotate(288)"/>
+          <circle fill="#3A7A9E" stroke="none" r="5"/>
+        </g>
+        <g transform="translate(298,108) rotate(30)">
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-9 2-14-8-12-22 C-10-33-2-38 0-38 C2-38 10-33 12-22 C14-8 9 2 0 3Z"/>
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-9 2-14-8-12-22 C-10-33-2-38 0-38 C2-38 10-33 12-22 C14-8 9 2 0 3Z" transform="rotate(72)"/>
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-9 2-14-8-12-22 C-10-33-2-38 0-38 C2-38 10-33 12-22 C14-8 9 2 0 3Z" transform="rotate(144)"/>
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-9 2-14-8-12-22 C-10-33-2-38 0-38 C2-38 10-33 12-22 C14-8 9 2 0 3Z" transform="rotate(216)"/>
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-9 2-14-8-12-22 C-10-33-2-38 0-38 C2-38 10-33 12-22 C14-8 9 2 0 3Z" transform="rotate(288)"/>
+          <circle fill="#3A7A9E" stroke="none" r="5"/>
+        </g>
+        <g transform="translate(260,112) rotate(-25)">
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-8 2-12-7-10-19 C-8-28-2-32 0-32 C2-32 8-28 10-19 C12-7 8 2 0 3Z"/>
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-8 2-12-7-10-19 C-8-28-2-32 0-32 C2-32 8-28 10-19 C12-7 8 2 0 3Z" transform="rotate(72)"/>
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-8 2-12-7-10-19 C-8-28-2-32 0-32 C2-32 8-28 10-19 C12-7 8 2 0 3Z" transform="rotate(144)"/>
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-8 2-12-7-10-19 C-8-28-2-32 0-32 C2-32 8-28 10-19 C12-7 8 2 0 3Z" transform="rotate(216)"/>
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-8 2-12-7-10-19 C-8-28-2-32 0-32 C2-32 8-28 10-19 C12-7 8 2 0 3Z" transform="rotate(288)"/>
+          <circle fill="#3A7A9E" stroke="none" r="4"/>
+        </g>
+        <path stroke="none" d="M 260 148 C 250 128 250 105 260 86 C 266 74 274 73 276 81 C 280 100 276 128 260 148Z" transform="rotate(-12,260,148)"/>
+        <path stroke="none" d="M 292 142 C 285 122 287 100 298 82 C 304 71 312 71 314 79 C 318 98 312 125 292 142Z" transform="rotate(10,292,142)"/>
+        <g transform="translate(326,92) rotate(15)">
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-7 2-11-6-9-17 C-7-26-2-30 0-30 C2-30 7-26 9-17 C11-6 7 2 0 3Z"/>
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-7 2-11-6-9-17 C-7-26-2-30 0-30 C2-30 7-26 9-17 C11-6 7 2 0 3Z" transform="rotate(72)"/>
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-7 2-11-6-9-17 C-7-26-2-30 0-30 C2-30 7-26 9-17 C11-6 7 2 0 3Z" transform="rotate(144)"/>
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-7 2-11-6-9-17 C-7-26-2-30 0-30 C2-30 7-26 9-17 C11-6 7 2 0 3Z" transform="rotate(216)"/>
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-7 2-11-6-9-17 C-7-26-2-30 0-30 C2-30 7-26 9-17 C11-6 7 2 0 3Z" transform="rotate(288)"/>
+          <circle fill="#3A7A9E" stroke="none" r="3.5"/>
+        </g>
+        <g transform="translate(344,100) rotate(-22)">
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-7 2-11-6-9-17 C-7-26-2-30 0-30 C2-30 7-26 9-17 C11-6 7 2 0 3Z"/>
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-7 2-11-6-9-17 C-7-26-2-30 0-30 C2-30 7-26 9-17 C11-6 7 2 0 3Z" transform="rotate(72)"/>
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-7 2-11-6-9-17 C-7-26-2-30 0-30 C2-30 7-26 9-17 C11-6 7 2 0 3Z" transform="rotate(144)"/>
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-7 2-11-6-9-17 C-7-26-2-30 0-30 C2-30 7-26 9-17 C11-6 7 2 0 3Z" transform="rotate(216)"/>
+          <path fill="#3A7A9E" stroke="none" d="M0 3 C-7 2-11-6-9-17 C-7-26-2-30 0-30 C2-30 7-26 9-17 C11-6 7 2 0 3Z" transform="rotate(288)"/>
+          <circle fill="#3A7A9E" stroke="none" r="3.5"/>
+        </g>
+        <path stroke="none" d="M 318 132 C 310 115 312 94 322 78 C 327 68 334 68 336 76 C 340 92 334 118 318 132Z"/>
+      </g>
+    </svg>
+
+    <div class="container">
+        <p class="hero-eyebrow">Child Protection · Migration · Humanitarian Action</p>
+        <h1 class="hero-headline">
+            You will find me wherever protection and displacement <em>intersect</em> your area of interest.
+        </h1>
+        <p class="hero-sub">Senior technical consulting for organisations working at the intersection of child protection, migration, and humanitarian action — across West and Central Africa, the Middle East, Europe, and globally.</p>
+        <div class="hero-tags">
+            <span class="tag">Technical Advisory</span>
+            <span class="tag">Programme Architecture</span>
+            <span class="tag">Ethics in Practice</span>
+            <span class="tag">Mentoring</span>
+            <span class="tag">Francophone West Africa</span>
+            <span class="tag">Nexus Programming</span>
+        </div>
+    </div>
+</section>
+
+<hr class="rule">
+
+<section id="services">
+    <div class="container">
+        <p class="section-label">What we do</p>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-num">01</div>
+                <h3 class="service-title">Technical Advisory</h3>
+                <p class="service-desc">Strategic and operational guidance on child protection in migration and displacement contexts. CP case management systems, quality standards, inter-agency coordination, and nexus programming across humanitarian and development modalities — in English and French.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-num">02</div>
+                <h3 class="service-title">Programme Architecture</h3>
+                <p class="service-desc">Design of the frameworks, standards, and systems that translate child protection intent into operationally coherent responses — Quality Assessment Frameworks, indicator menus, capacity building toolkits, and monitoring systems built for field reality.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-num">03</div>
+                <h3 class="service-title">Ethics in Practice</h3>
+                <p class="service-desc">Navigating the ethical dimensions of humanitarian action in displacement contexts — safeguarding, do-no-harm programming, accountability to affected populations, and the moral complexity of working with children in crisis and fragile settings.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-num">04</div>
+                <h3 class="service-title">Mentoring</h3>
+                <p class="service-desc">Professional mentoring for child protection and migration practitioners navigating technical complexity, leadership transitions, or the particular challenges of building a career at the intersection of humanitarian and development work.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="rule">
+
+<section id="about">
+    <div class="container">
+        <p class="section-label">Amanda Azzali</p>
+        <div class="about-grid">
+            <div class="about-left">
+                <h2>Senior technical expert at the intersection of child protection and migration.</h2>
+            </div>
+            <div class="about-right">
+                <p>Over twenty years of field and technical leadership across West and Central Africa and the Middle East have produced a specific and rare combination: deep expertise in child protection systems, a migration sub-specialisation, and the institutional knowledge to work across humanitarian and development modalities — in both English and French.</p>
+                <p>I build the frameworks, regional architectures, and capacity building systems that translate protection intent into consistent, high-quality responses for children in displacement and migration settings. Most recently, I developed <strong>Save the Children's global CP Case Management guidance for migration contexts</strong> — a Quality Assessment Framework, a Menu of Indicators and Quality Benchmarks, and a Capacity Building Toolkit, in consultation with the Migration and Displacement Technical Working Group.</p>
+                <p>I served as <strong>Regional Child Protection Technical Advisor</strong> for Save the Children's West and Central Africa portfolio, leading technical strategy at the humanitarian-development nexus across seven country contexts. Earlier, I established Terre des Hommes Italia's Jordan mission and led child protection programming for children affected by the Iraq conflict.</p>
+                <p>Based in Reggio Emilia, Italy. Available remotely and for international travel.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="rule">
+
+<section id="together">
+    <div class="container">
+        <p class="section-label">Working Together</p>
+        <div class="together-intro">
+            <h2>Complementary expertise. Combined reach.</h2>
+            <p>Intersections Advisory brings together senior practitioners with complementary geographic, thematic, and functional expertise — enabling mandates that require both field credibility and strategic range across regions and disciplines.</p>
+        </div>
+        <div class="profiles-grid">
+            <div class="profile-card">
+                <h3 class="profile-name">Amanda Azzali</h3>
+                <p class="profile-role">Child Protection · Migration · Francophone WCA · Middle East</p>
+                <p class="profile-bio">CP technical standard-setting, migration programming, nexus programme architecture, and regional capacity building across West and Central Africa and the Middle East. Twenty years of field and regional leadership with Save the Children International and Terre des Hommes Italia. Fluent in English, French, and Italian.</p>
+            </div>
+            <div class="profile-card">
+                <h3 class="profile-name">David Brickey Bloomer</h3>
+                <p class="profile-role">Child Protection · Asia-Pacific · Global</p>
+                <p class="profile-bio">Senior humanitarian and child protection leader with director-level experience across Asia-Pacific and global portfolios. Deep expertise in CPHA, SGBV, MHPSS, and the centrality of protection — with a strong track record in integrated programming, policy, advocacy, and strategic communications.</p>
+            </div>
+        </div>
+        <div class="combined-value">
+            <h3>What the combination makes possible</h3>
+            <ul class="value-list">
+                <li>Global geographic coverage — West and Central Africa, Middle East, Asia-Pacific — with genuine field knowledge in each region, not desk-level familiarity</li>
+                <li>Full-spectrum CP expertise across case management, SGBV, MHPSS, trafficking, UASC, and juvenile justice — in both humanitarian and development modalities</li>
+                <li>English and French language capacity across the full mandate cycle — research, field interviews, stakeholder engagement, and final reporting</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-inner">
+            <span class="footer-mark">+ Intersections Advisory</span>
+            <span class="footer-copy">© 2026 Intersections Advisory</span>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
