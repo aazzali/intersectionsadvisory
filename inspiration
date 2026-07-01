@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inspiration - Intersections Advisory</title>
+    <meta name="description" content="Explore the ideas, frameworks, and texts that inform our perspective at Intersections Advisory.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Galatia:ital,wght=0,400;0,500;1,400;1,500&family=Inter:wght=300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg:           #B6EBC0; 
+            --surface:      #A1DFA9; 
+            --text:         #102A16; 
+            --accent:       #2A5934; 
+            --accent-hover: #1A3A21;
+            --secondary:    #43634B; 
+            --divider:      #93CE9E; 
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', system-ui, sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            font-size: 16px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container { max-width: 1080px; margin: 0 auto; padding: 0 2.5rem; width: 100%; }
+
+        /* NAV */
+        nav {
+            padding: 1.75rem 0;
+            border-bottom: 1px solid var(--divider);
+            background: var(--bg);
+            z-index: 100;
+        }
+        .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+        .nav-mark { display: flex; align-items: center; gap: 0.65rem; text-decoration: none; }
+        .nav-cross { font-size: 1.1rem; color: var(--accent); font-weight: 300; line-height: 1; }
+        .nav-name { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text); }
+        .nav-links { list-style: none; display: flex; gap: 2.5rem; }
+        .nav-links a { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--secondary); text-decoration: none; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--accent); }
+
+        /* MOBILE NAV */
+        .mobile-nav-select {
+            display: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--text);
+            background: var(--surface);
+            border: 1px solid var(--accent);
+            padding: 0.45rem 0.8rem;
+            border-radius: 3px;
+            outline: none;
+        }
+
+        /* MAIN CONTENT AREA WITH BANYAN SILHOUETTE */
+        .main-content { 
+            position: relative; 
+            overflow: hidden; 
+            padding: 6rem 0 8rem 0; 
+            flex: 1;
+        }
+
+        .hero-banyan {
+            position: absolute;
+            right: -2%;
+            bottom: -5%;
+            height: 115%;
+            width: auto;
+            opacity: 0.14;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        /* HERO HEADER BLOCK */
+        .inspiration-header { max-width: 650px; margin-bottom: 5rem; position: relative; z-index: 2; }
+        .section-label { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 2.5rem; display: flex; align-items: center; gap: 0.9rem; }
+        .section-label::after { content: ''; display: block; height: 1px; width: 2.5rem; background: var(--accent); opacity: 0.35; }
+        .inspiration-header h1 { font-family: 'Cormorant Galatia', serif; font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 400; line-height: 1.15; }
+
+        /* MATERIAL LIST LAYOUT */
+        .materials-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 3.5rem 2.5rem; position: relative; z-index: 2; }
+        .material-card { display: flex; flex-direction: column; align-items: flex-start; }
+        .material-meta { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem; }
+        .material-title { font-family: 'Cormorant Galatia', serif; font-size: 1.5rem; font-weight: 500; line-height: 1.25; margin-bottom: 0.6rem; color: var(--text); text-decoration: none; }
+        .material-title[href]:hover { text-decoration: underline; color: var(--accent-hover); }
+        .material-desc { font-size: 0.9rem; color: var(--secondary); line-height: 1.6; }
+
+        /* FOOTER */
+        footer { padding: 1.75rem 0; border-top: 1px solid var(--divider); background: var(--bg); }
+        .footer-inner { display: flex; justify-content: space-between; align-items: center; }
+        .footer-mark { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--secondary); }
+        .footer-copy { font-size: 0.72rem; color: var(--secondary); }
+
+        /* RESPONSIVE SCALING */
+        @media (max-width: 768px) {
+            .container { padding: 0 1.5rem; }
+            .nav-links { display: none; }
+            .mobile-nav-select { display: block; }
+            .inspiration-header { margin-bottom: 3.5rem; }
+            .hero-banyan { height: 75%; right: -25%; bottom: -10%; opacity: 0.08; }
+            .materials-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .footer-inner { flex-direction: column; gap: 0.4rem; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="container">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-mark">
+                <span class="nav-cross">+</span>
+                <span class="nav-name">Intersections Advisory</span>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#together">Together</a></li>
+                <li><a href="articles.html">Articles</a></li>
+                <li><a href="#">Inspiration</a></li>
+                <li><a href="contact.html">Contacts</a></li>
+            </ul>
+
+            <select class="mobile-nav-select" onchange="location = this.value;">
+                <option value="" disabled>Menu</option>
+                <option value="index.html#services">Services</option>
+                <option value="index.html#about">About</option>
+                <option value="index.html#together">Together</option>
+                <option value="articles.html">Articles</option>
+                <option value="inspiration.html" selected>Inspiration</option>
+                <option value="contact.html">Contacts</option>
+            </select>
+        </div>
+    </div>
+</nav>
+
+<!-- MAIN CONTENT AREA -->
+<main class="main-content">
+
+    <!-- Background Banyan Graphic -->
+    <svg class="hero-banyan" viewBox="0 0 500 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g fill="#2A5934" stroke="#2A5934" stroke-linecap="round" stroke-linejoin="round">
+        <path fill="none" stroke-width="28" d="M 230 600 C 235 520 200 440 210 380 C 220 330 250 290 250 240"/>
+        <path fill="none" stroke-width="18" d="M 180 600 C 190 530 210 480 210 380"/>
+        <path fill="none" stroke-width="16" d="M 280 600 C 270 540 240 490 250 380 C 255 330 280 290 290 250"/>
+        <path fill="none" stroke-width="5" opacity="0.7" d="M 140 290 C 145 380 150 480 150 600"/>
+        <path fill="none" stroke-width="4" opacity="0.7" d="M 360 270 C 355 370 340 490 330 600"/>
+        <path fill="none" stroke-width="3" opacity="0.6" d="M 90 320 C 100 400 110 500 110 600"/>
+        <path fill="none" stroke-width="14" d="M 250 240 C 210 210 150 220 100 250 C 70 270 50 300 20 320"/>
+        <path fill="none" stroke-width="12" d="M 250 240 C 270 190 310 170 360 180 C 410 190 450 230 490 250"/>
+        <path fill="none" stroke-width="10" d="M 210 380 C 170 340 130 290 140 290 C 150 290 180 260 200 210"/>
+        <path fill="none" stroke-width="11" d="M 250 240 C 255 170 230 130 210 90"/>
+        <path fill="none" stroke-width="9" d="M 210 90 C 170 80 130 100 90 130"/>
+        <path fill="none" stroke-width="8" d="M 210 90 C 240 70 280 60 320 80"/>
+        <path d="M 10 320 C -10 290 10 250 40 260 C 60 230 100 230 110 260 C 130 240 160 250 160 280 C 180 290 170 330 140 330 C 120 350 80 350 60 330 C 30 350 10 340 10 320 Z" opacity="0.85"/>
+        <path d="M 330 190 C 320 150 350 120 380 140 C 400 110 450 120 460 150 C 490 150 500 190 480 210 C 490 240 460 270 430 250 C 410 270 370 260 360 230 C 330 230 320 210 330 190 Z" opacity="0.85"/>
+        <path d="M 60 130 C 40 110 60 70 90 80 C 100 50 140 50 160 80 C 180 60 220 70 220 100 C 230 120 210 150 180 150 C 160 170 120 170 100 150 C 70 160 50 150 60 130 Z" opacity="0.85"/>
+        <path d="M 260 80 C 250 40 290 10 320 30 C 340 5 390 15 390 45 C 410 45 430 75 410 105 C 390 125 350 125 330 105 C 300 115 270 105 260 80 Z" opacity="0.85"/>
+      </g>
+    </svg>
+
+    <div class="container">
+        <div class="inspiration-header">
+            <p class="section-label">Related Material</p>
+            <h1>What lands us at the intersection.</h1>
+        </div>
+
+        <!-- Material Placeholder List: Feel free to change titles and types! -->
+        <div class="materials-grid">
+            
+            <div class="material-card">
+                <span class="material-meta">Book / Essay</span>
+                <a href="#" class="material-title">Example Title One</a>
+                <p class="material-desc">A brief description or memorable excerpt introducing why this specific work informs your humanitarian, child protection, or migration frameworks.</p>
+            </div>
+
+            <div class="material-card">
+                <span class="material-meta">Framework</span>
+                <a href="#" class="material-title">Example Title Two</a>
+                <p class="material-desc">An overview of an external study, analytical theory, or dynamic intersectional perspective that aligns deeply with your consultancy values.</p>
+            </div>
+
+            <div class="material-card">
+                <span class="material-meta">Article</span>
+                <a href="#" class="material-title">Example Title Three</a>
+                <p class="material-desc">A description of relevant reference material, partner guidelines, or legal structural shifts that reshape current advisory actions.</p>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-inner">
+            <span class="footer-mark">+ Intersections Advisory</span>
+            <span class="footer-copy">© 2026 Intersections Advisory</span>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
