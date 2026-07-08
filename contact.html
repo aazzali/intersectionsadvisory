@@ -38,36 +38,44 @@
 
         .container { max-width: 1080px; margin: 0 auto; padding: 0 2.5rem; width: 100%; }
 
-        /* NAV */
-        nav {
-            padding: 1.75rem 0;
-            border-bottom: 1px solid var(--divider);
-            background: var(--bg);
-            z-index: 100;
-        }
-        .nav-inner { display: flex; align-items: center; justify-content: space-between; }
-        .nav-mark { display: flex; align-items: center; gap: 0.65rem; text-decoration: none; }
-        .nav-cross { font-size: 1.1rem; color: var(--accent); font-weight: 300; line-height: 1; }
-        .nav-name { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text); }
-        .nav-links { list-style: none; display: flex; gap: 2.5rem; }
-        .nav-links a { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--secondary); text-decoration: none; transition: color 0.2s; }
-        .nav-links a:hover { color: var(--accent); }
-
-        /* MOBILE DROPDOWN COMPONENT */
-        .mobile-nav-select {
-            display: none;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            color: var(--text);
-            background: var(--surface);
-            border: 1px solid var(--accent);
-            padding: 0.45rem 0.8rem;
-            border-radius: 3px;
-            outline: none;
-        }
+<nav>
+    <div class="container">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-mark">
+                <span class="nav-cross">+</span>
+                <span class="nav-name">Intersections Advisory</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li class="has-dropdown">
+                    <a href="#">Portfolio</a>
+                    <ul class="dropdown">
+                        <li><a href="amanda.html">Amanda</a></li>
+                        <li><a href="david.html">David</a></li>
+                    </ul>
+                </li>
+                <li><a href="articles.html">Articles</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="edges.html">Edges</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="team.html">Team</a>
+        <a href="amanda.html" class="mobile-sub">Portfolio — Amanda</a>
+        <a href="david.html" class="mobile-sub">Portfolio — David</a>
+        <a href="articles.html">Articles</a>
+        <a href="contact.html">Contact</a>
+        <a href="edges.html">Edges</a>
+    </div>
+</nav>
 
         /* MAIN CONTENT AREA WITH BANYAN SILHOUETTE */
         .main-content { 
