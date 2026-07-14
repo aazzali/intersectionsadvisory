@@ -93,13 +93,9 @@
         .footer-mark { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--secondary); }
         .footer-copy { font-size: 0.72rem; color: var(--secondary); }
 
-        @media (max-width: 768px) {
-            .container { padding: 0 1.5rem; }
-            .nav-links { display: none; }
-            .hero { padding: 4rem 0 3.5rem; }
-            .hero-tree { height: 70%; opacity: 0.07; }
-            .service-block { grid-template-columns: 1fr; gap: 1.5rem; }
-            .footer-inner { flex-direction: column; gap: 0.4rem; text-align: center; }
+       @media (max-width: 768px) {
+    .nav-links { display: none !important; }
+    .mobile-nav-select { display: block !important; }
         }
     </style>
 </head>
