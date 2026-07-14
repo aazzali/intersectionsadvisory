@@ -25,13 +25,34 @@
         body { background: var(--bg); color: var(--text); font-family: 'Inter', system-ui, sans-serif; font-weight: 400; line-height: 1.6; font-size: 16px; }
         .container { max-width: 1080px; margin: 0 auto; padding: 0 2.5rem; }
 
-        /* NAV */
-        nav { padding: 1.75rem 0; border-bottom: 1px solid var(--divider); position: sticky; top: 0; background: var(--bg); z-index: 100; }
-        .nav-inner { display: flex; align-items: center; justify-content: space-between; }
-        .nav-mark { display: flex; align-items: center; gap: 0.65rem; text-decoration: none; }
-        .nav-cross { font-size: 1.1rem; color: var(--accent); font-weight: 300; }
-        .nav-name { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text); }
+       <nav>
+    <div class="container">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-mark">
+                <span class="nav-cross">+</span>
+                <span class="nav-name">Intersections Advisory</span>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#about">Team</a></li> <li><a href="index.html#together">Portfolio</a></li> <li><a href="articles.html">Articles</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="edges.html">Edges</a></li> </ul>
 
+            <select class="mobile-nav-select" onchange="location = this.value;">
+                <option value="" disabled selected>Menu</option>
+                <option value="index.html">Home</option>
+                <option value="index.html#services">Services</option>
+                <option value="index.html#about">Team</option>
+                <option value="index.html#together">Portfolio</option>
+                <option value="articles.html">Articles</option>
+                <option value="contact.html">Contact</option>
+                <option value="edges.html">Edges</option>
+            </select>
+        </div>
+    </div>
+</nav>
         /* Desktop nav */
         .nav-links { list-style: none; display: flex; gap: 2rem; align-items: center; }
         .nav-links > li { position: relative; }
