@@ -88,16 +88,21 @@
         .footer-mark { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--secondary); }
         .footer-copy { font-size: 0.72rem; color: var(--secondary); }
 
-        @media (max-width: 768px) {
-            .container { padding: 0 1.5rem; }
-            .nav-links { display: none; }
-            .hamburger { display: flex; }
-            .mobile-menu { padding: 1rem 1.5rem 1.5rem; }
-            .hero { padding: 4rem 0 3.5rem; }
-            .hero-frangipani { height: 90%; opacity: 0.15; }
-            .welcome-grid { grid-template-columns: 1fr; gap: 3rem; }
-            .footer-inner { flex-direction: column; gap: 0.4rem; text-align: center; }
-        }
+       @media (max-width: 768px) {
+    .container { padding: 0 1.5rem; }
+    
+    /* Hide the old desktop links and any old hamburger parts */
+    .nav-links, .hamburger, .mobile-menu { display: none !important; }
+    
+    /* Smoothly display your brand new dropdown bar */
+    .mobile-nav-select { display: block !important; }
+    
+    /* Keep all of your excellent structural layouts below intact */
+    .hero { padding: 4rem 0 3.5rem; }
+    .hero-frangipani { height: 90%; opacity: 0.15; }
+    .welcome-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .footer-inner { flex-direction: column; gap: 0.4rem; text-align: center; }
+}
     </style>
 </head>
 <body>
