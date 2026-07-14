@@ -103,22 +103,39 @@
     .welcome-grid { grid-template-columns: 1fr; gap: 3rem; }
     .footer-inner { flex-direction: column; gap: 0.4rem; text-align: center; }
 }
+        /* ... All your previous, working page styles are up here ... */
+
+        /* Paste this clean rule right here: */
+        .mobile-nav-select {
+            display: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: #141A10;
+            background: #E4EBE0;
+            border: 1px solid #4A6B36;
+            padding: 0.45rem 0.8rem;
+            border-radius: 3px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 1.5rem; }
+            .nav-links, .hamburger, .mobile-menu { display: none !important; }
+            .mobile-nav-select { display: block !important; }
+            .hero { padding: 4rem 0 3.5rem; }
+            .hero-frangipani { height: 90%; opacity: 0.15; }
+            .welcome-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .footer-inner { flex-direction: column; gap: 0.4rem; text-align: center; }
+        }
+    </style> ```
+
+4. Look directly below that `</style>` tag. If there is any loose CSS code sitting out in the open (without being wrapped by `<style>` and `</style>`), **delete it**.
     </style>
-    .mobile-nav-select {
-    display: none;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--text);
-    background: var(--surface, #E4EBE0);
-    border: 1px solid var(--accent);
-    padding: 0.45rem 0.8rem;
-    border-radius: 3px;
-    outline: none;
-}
-</head>
+   </head>
 <body>
 
 <nav>
@@ -158,6 +175,7 @@
         <a href="contact.html">Contact</a>
         <a href="edges.html">Edges</a>
     </div>
+    
 </nav>
 
 <!-- HERO -->
