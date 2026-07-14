@@ -25,42 +25,32 @@
         body { background: var(--bg); color: var(--text); font-family: 'Inter', system-ui, sans-serif; font-weight: 400; line-height: 1.6; font-size: 16px; }
         .container { max-width: 1080px; margin: 0 auto; padding: 0 2.5rem; }
 
-      <nav>
+  <nav>
     <div class="container">
         <div class="nav-inner">
             <a href="index.html" class="nav-mark">
                 <span class="nav-cross">+</span>
                 <span class="nav-name">Intersections Advisory</span>
             </a>
+            
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="team.html"class="active">Team</a></li>
-                <li class="has-dropdown">
-                    <a href="#">Portfolio</a>
-                    <ul class="dropdown">
-                        <li><a href="amanda.html">Amanda</a></li>
-                        <li><a href="david.html">David</a></li>
-                    </ul>
-                </li>
-                <li><a href="articles.html">Articles</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#about">Team</a></li> <li><a href="index.html#together">Portfolio</a></li> <li><a href="articles.html">Articles</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li><a href="edges.html">Edges</a></li>
-            </ul>
-            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-                <span></span><span></span><span></span>
-            </button>
+                <li><a href="edges.html">Edges</a></li> </ul>
+
+            <select class="mobile-nav-select" onchange="location = this.value;">
+                <option value="" disabled selected>Menu</option>
+                <option value="index.html">Home</option>
+                <option value="index.html#services">Services</option>
+                <option value="index.html#about">Team</option>
+                <option value="index.html#together">Portfolio</option>
+                <option value="articles.html">Articles</option>
+                <option value="contact.html">Contact</option>
+                <option value="edges.html">Edges</option>
+            </select>
         </div>
-    </div>
-    <div class="mobile-menu" id="mobile-menu">
-        <a href="index.html">Home</a>
-        <a href="services.html">Services</a>
-        <a href="team.html">Team</a>
-        <a href="amanda.html" class="mobile-sub">Portfolio — Amanda</a>
-        <a href="david.html" class="mobile-sub">Portfolio — David</a>
-        <a href="articles.html">Articles</a>
-        <a href="contact.html">Contact</a>
-        <a href="edges.html">Edges</a>
     </div>
 </nav>
 
