@@ -12,14 +12,13 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
-            /* Updated with your requested crisp green background tint */
             --bg:           #B6EBC0; 
-            --surface:      #A1DFA9; /* Harmonized deeper leaf surface */
-            --text:         #102A16; /* Clean deep green-black for striking text readability */
-            --accent:       #2A5934; /* Dark Forest accents */
+            --surface:      #A1DFA9; 
+            --text:         #102A16; 
+            --accent:       #2A5934; 
             --accent-hover: #1A3A21;
-            --secondary:    #43634B; /* Muted sage-tone for context tags */
-            --divider:      #93CE9E; /* Balanced border division lines */
+            --secondary:    #43634B; 
+            --divider:      #93CE9E; 
         }
 
         html { scroll-behavior: smooth; }
@@ -38,34 +37,37 @@
 
         .container { max-width: 1080px; margin: 0 auto; padding: 0 2.5rem; width: 100%; }
 
-<nav>
-    <div class="container">
-        <div class="nav-inner">
-            <a href="index.html" class="nav-mark">
-                <span class="nav-cross">+</span>
-                <span class="nav-name">Intersections Advisory</span>
-            </a>
-            
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#services">Services</a></li>
-                <li><a href="index.html#about">Team</a></li> <li><a href="index.html#together">Portfolio</a></li> <li><a href="articles.html">Articles</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="edges.html">Edges</a></li> </ul>
+        /* NAV */
+        nav {
+            padding: 1.75rem 0;
+            border-bottom: 1px solid var(--divider);
+            background: var(--bg);
+            z-index: 100;
+        }
+        .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+        .nav-mark { display: flex; align-items: center; gap: 0.65rem; text-decoration: none; }
+        .nav-cross { font-size: 1.1rem; color: var(--accent); font-weight: 300; line-height: 1; }
+        .nav-name { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text); }
+        .nav-links { list-style: none; display: flex; gap: 2.5rem; }
+        .nav-links a { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--secondary); text-decoration: none; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--accent); }
 
-            <select class="mobile-nav-select" onchange="location = this.value;">
-                <option value="" disabled selected>Menu</option>
-                <option value="index.html">Home</option>
-                <option value="index.html#services">Services</option>
-                <option value="index.html#about">Team</option>
-                <option value="index.html#together">Portfolio</option>
-                <option value="articles.html">Articles</option>
-                <option value="contact.html">Contact</option>
-                <option value="edges.html">Edges</option>
-            </select>
-        </div>
-    </div>
-</nav>
+        /* MOBILE DROPDOWN COMPONENT */
+        .mobile-nav-select {
+            display: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--text);
+            background: var(--surface);
+            border: 1px solid var(--accent);
+            padding: 0.45rem 0.8rem;
+            border-radius: 3px;
+            outline: none;
+            cursor: pointer;
+        }
 
         /* MAIN CONTENT AREA WITH BANYAN SILHOUETTE */
         .main-content { 
@@ -112,8 +114,8 @@
         /* RESPONSIVE SCALING */
         @media (max-width: 768px) {
             .container { padding: 0 1.5rem; }
-            .nav-links { display: none; }
-            .mobile-nav-select { display: block; }
+            .nav-links { display: none !important; }
+            .mobile-nav-select { display: block !important; }
             .main-content { padding: 5rem 0; }
             .hero-banyan { height: 90%; right: -20%; bottom: -10%; opacity: 0.08; }
             .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
@@ -123,7 +125,6 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
     <div class="container">
         <div class="nav-inner">
@@ -132,31 +133,31 @@
                 <span class="nav-name">Intersections Advisory</span>
             </a>
             
-            <!-- Links for Larger Screens -->
             <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
                 <li><a href="index.html#services">Services</a></li>
-                <li><a href="index.html#about">About</a></li>
-                <li><a href="index.html#together">Together</a></li>
+                <li><a href="index.html#about">Team</a></li>
+                <li><a href="index.html#together">Portfolio</a></li>
                 <li><a href="articles.html">Articles</a></li>
-                <li><a href="#">Contacts</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="edges.html">Edges</a></li>
             </ul>
 
-            <!-- Adaptive Mobile Dropdown Toggler -->
             <select class="mobile-nav-select" onchange="location = this.value;">
-                <option value="" disabled selected>Menu</option>
+                <option value="" disabled>Menu</option>
+                <option value="index.html">Home</option>
                 <option value="index.html#services">Services</option>
-                <option value="index.html#about">About</option>
-                <option value="index.html#together">Together</option>
+                <option value="index.html#about">Team</option>
+                <option value="index.html#together">Portfolio</option>
                 <option value="articles.html">Articles</option>
-                <option value="contact.html">Contacts</option>
+                <option value="contact.html" selected>Contact</option>
+                <option value="edges.html">Edges</option>
             </select>
         </div>
     </div>
 </nav>
 
-<!-- MAIN CONTENT AREA WITH BANYAN SILHOUETTE -->
 <main class="main-content">
-
     <svg class="hero-banyan" viewBox="0 0 500 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <g fill="#2A5934" stroke="#2A5934" stroke-linecap="round" stroke-linejoin="round">
         <path fill="none" stroke-width="28" d="M 230 600 C 235 520 200 440 210 380 C 220 330 250 290 250 240"/>
@@ -203,7 +204,6 @@
     </div>
 </main>
 
-<!-- FOOTER -->
 <footer>
     <div class="container">
         <div class="footer-inner">
@@ -215,5 +215,3 @@
 
 </body>
 </html>
-
-```
