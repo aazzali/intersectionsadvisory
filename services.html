@@ -24,6 +24,73 @@
         html { scroll-behavior: smooth; }
 
         body {
+            <div id="splash-curtain">
+    <div class="splash-content">
+        <span class="splash-cross">+</span>
+        <h2 class="splash-text">Intersections Advisory</h2>
+    </div>
+</div>
+
+<style>
+    /* This styles the full-screen curtain */
+    #splash-curtain {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #4A6B36; /* Your brand green */
+        color: #F4F7F1; /* Your light cream text color */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999; /* Keeps it on top of absolutely everything */
+        transition: opacity 0.8s ease, visibility 0.8s; /* Smooth fade-out */
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* Styles the text & cross inside the curtain */
+    .splash-content {
+        text-align: center;
+        animation: bubbleUp 1s ease-out;
+    }
+
+    .splash-cross {
+        font-size: 3rem;
+        font-weight: 300;
+        display: block;
+        margin-bottom: 1rem;
+        color: #B6EBC0; /* Light accent green */
+    }
+
+    .splash-text {
+        font-family: 'Cormorant Galatia', serif;
+        font-size: 2rem;
+        font-weight: 400;
+        letter-spacing: 0.1em;
+    }
+
+    /* A subtle "bubbling up" entry animation for the text */
+    @keyframes bubbleUp {
+        0% { transform: translateY(20px); opacity: 0; }
+        100% { transform: translateY(0); opacity: 1; }
+    }
+
+    /* This class will be applied by the timer to hide the curtain */
+    #splash-curtain.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none; /* Allows users to click the page underneath */
+    }
+</style>
+
+<script>
+    // The 3-second timer
+    setTimeout(function() {
+        document.getElementById('splash-curtain').classList.add('hidden');
+    }, 3000); // 3000 milliseconds = 3 seconds
+</script>
             background: var(--bg);
             color: var(--text);
             font-family: 'Inter', system-ui, sans-serif;
