@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services - Intersections Advisory</title>
+    <meta name="description" content="Senior technical consulting services in child protection, migration, and humanitarian action.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Galatia:ital,wght=0,400;0,500;1,400;1,500&family=Inter:wght=300;400;500;600&display=swap" rel="stylesheet">
@@ -29,17 +30,19 @@
             font-weight: 400;
             line-height: 1.6;
             font-size: 16px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         .container { max-width: 1080px; margin: 0 auto; padding: 0 2.5rem; width: 100%; }
 
-        /* NAV STYLES */
+        /* NAV */
         nav {
             padding: 1.75rem 0;
             border-bottom: 1px solid var(--divider);
             background: var(--bg);
             z-index: 100;
-            position: relative;
         }
         .nav-inner { display: flex; align-items: center; justify-content: space-between; }
         .nav-mark { display: flex; align-items: center; gap: 0.65rem; text-decoration: none; }
@@ -49,7 +52,7 @@
         .nav-links a { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--secondary); text-decoration: none; transition: color 0.2s; }
         .nav-links a:hover { color: var(--accent); }
 
-        /* MOBILE DROPDOWN STYLES */
+        /* MOBILE NAV SELECT */
         .mobile-nav-select {
             display: none;
             font-family: 'Inter', sans-serif;
@@ -66,16 +69,93 @@
             cursor: pointer;
         }
 
-        /* RESPONSIVE NAV OVERRIDE */
+        /* HEADER AREA */
+        .page-header { 
+            position: relative; 
+            overflow: hidden; 
+            padding: 6rem 0 4rem; 
+        }
+
+        .hero-banyan {
+            position: absolute;
+            right: -5%;
+            bottom: -20%;
+            height: 140%;
+            width: auto;
+            opacity: 0.09;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .section-label { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 2rem; display: flex; align-items: center; gap: 0.9rem; }
+        .section-label::after { content: ''; display: block; height: 1px; width: 2.5rem; background: var(--accent); opacity: 0.35; }
+
+        .page-header h1 { 
+            font-family: 'Cormorant Galatia', serif; 
+            font-size: clamp(2.5rem, 5vw, 4rem); 
+            font-weight: 400; 
+            line-height: 1.1; 
+            max-width: 650px;
+        }
+
+        /* SERVICES LAYOUT */
+        .services-section { flex: 1; padding: 2rem 0 6rem; }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 4rem 3rem;
+        }
+
+        .service-card {
+            padding-top: 2rem;
+            border-top: 1px solid var(--divider);
+        }
+
+        .service-num {
+            font-size: 0.75rem;
+            color: var(--accent);
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-card h2 {
+            font-family: 'Cormorant Galatia', serif;
+            font-size: 1.85rem;
+            font-weight: 500;
+            line-height: 1.3;
+            margin-bottom: 1.25rem;
+            color: var(--text);
+        }
+
+        .service-card p {
+            font-size: 0.9375rem;
+            color: var(--secondary);
+            line-height: 1.75;
+        }
+
+        /* FOOTER */
+        footer { padding: 1.75rem 0; border-top: 1px solid var(--divider); background: var(--bg); }
+        .footer-inner { display: flex; justify-content: space-between; align-items: center; }
+        .footer-mark { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--secondary); }
+        .footer-copy { font-size: 0.72rem; color: var(--secondary); }
+
+        /* MOBILE RESPONSIVE */
         @media (max-width: 768px) {
             .container { padding: 0 1.5rem; }
             .nav-links { display: none !important; }
             .mobile-nav-select { display: block !important; }
+            .page-header { padding: 4rem 0 2.5rem; }
+            .hero-banyan { height: 100%; right: -20%; bottom: -10%; }
+            .services-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .footer-inner { flex-direction: column; gap: 0.4rem; text-align: center; }
         }
     </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
     <div class="container">
         <div class="nav-inner">
@@ -108,58 +188,59 @@
     </div>
 </nav>
 
-<!-- SERVICES DETAIL -->
-<section class="services-section">
+<!-- HEADER WITH BANYAN SILHOUETTE -->
+<header class="page-header">
+    <svg class="hero-banyan" viewBox="0 0 500 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g fill="#4A6B36" stroke="#4A6B36" stroke-linecap="round" stroke-linejoin="round">
+        <path fill="none" stroke-width="28" d="M 230 600 C 235 520 200 440 210 380 C 220 330 250 290 250 240"/>
+        <path fill="none" stroke-width="18" d="M 180 600 C 190 530 210 480 210 380"/>
+        <path fill="none" stroke-width="16" d="M 280 600 C 270 540 240 490 250 380 C 255 330 280 290 290 250"/>
+        <path fill="none" stroke-width="6" opacity="0.75" d="M 140 290 C 145 380 150 480 150 600"/>
+        <path fill="none" stroke-width="5" opacity="0.75" d="M 360 270 C 355 370 340 490 330 600"/>
+        <path fill="none" stroke-width="14" d="M 250 240 C 210 210 150 220 100 250 C 70 270 50 300 20 320"/>
+        <path fill="none" stroke-width="12" d="M 250 240 C 270 190 310 170 360 180 C 410 190 450 230 490 250"/>
+        <path d="M 10 320 C -10 290 10 250 40 260 C 60 230 100 230 110 260 C 130 240 160 250 160 280 Z" opacity="0.85"/>
+        <path d="M 330 190 C 320 150 350 120 380 140 C 400 110 450 120 460 150 Z" opacity="0.85"/>
+      </g>
+    </svg>
+
     <div class="container">
-        <p class="section-label">Services</p>
+        <p class="section-label">Advisory</p>
+        <h1>Our Services</h1>
+    </div>
+</header>
 
-        <div class="service-block">
-            <div class="service-left">
-                <p class="service-tag">01</p>
-                <h3>Technical Advisory</h3>
-            </div>
-            <div class="service-right">
-                <p>Strategic and operational guidance on child protection in migration and displacement contexts. We work with organisations to strengthen CP case management systems, develop quality standards, improve inter-agency coordination, and design nexus programming that functions across humanitarian and development modalities.</p>
-                <p>Particular depth in: <strong>UASC, stateless children, trafficking survivors, asylum seekers</strong>, and children in mixed migration flows across Francophone West and Central Africa and the Middle East. Available in English and French across the full mandate cycle.</p>
-            </div>
-        </div>
+<!-- SERVICES SECTION -->
+<main class="services-section">
+    <div class="container">
+        <div class="services-grid">
 
-        <div class="service-block">
-            <div class="service-left">
-                <p class="service-tag">02</p>
-                <h3>Programme Architecture</h3>
+            <!-- CARD 1 -->
+            <div class="service-card">
+                <div class="service-num">01/</div>
+                <h2>Strategic Advisory & Systems Design</h2>
+                <p>Providing high-level structural guidance for complex migration frameworks, organizational mandates, and international child protection protocols in field operational settings.</p>
             </div>
-            <div class="service-right">
-                <p>Design of the frameworks, standards, and systems that translate child protection intent into operationally coherent responses — built for field reality, not only for compliance.</p>
-                <p>We develop <strong>Quality Assessment Frameworks, indicator menus, capacity building toolkits, and monitoring systems</strong> that practitioners can actually use. Our most recent global mandate produced SCI's CP Case Management guidance for migration contexts — a three-part package now being rolled out across SCI's global portfolio.</p>
-                <p>We bring the same rigour to smaller-scale assignments: a single country programme, a regional coordination mechanism, a partner capacity assessment.</p>
-            </div>
-        </div>
 
-        <div class="service-block">
-            <div class="service-left">
-                <p class="service-tag">03</p>
-                <h3>Ethics in Practice</h3>
+            <!-- CARD 2 -->
+            <div class="service-card">
+                <div class="service-num">02/</div>
+                <h2>Evaluations & Fields Assessment</h2>
+                <p>Deploying specialized technical expertise to map protection gaps, audit existing operational workflows, and gather precise baseline structural metrics in high-risk environments.</p>
             </div>
-            <div class="service-right">
-                <p>Humanitarian action in displacement contexts raises ethical questions that technical frameworks alone cannot answer. Who gets counted? Whose protection is prioritised when resources are scarce? What does accountability to affected children actually look like when those children cannot speak for themselves?</p>
-                <p>We work with organisations navigating <strong>safeguarding, do-no-harm programming, PSEA, accountability to affected populations</strong>, and the particular moral complexity of working with children in fragile, conflict-affected, and migration settings. This is not compliance training — it is structured engagement with the hard questions that determine programme quality.</p>
-            </div>
-        </div>
 
-        <div class="service-block">
-            <div class="service-left">
-                <p class="service-tag">04</p>
-                <h3>Mentoring</h3>
+            <!-- CARD 3 -->
+            <div class="service-card">
+                <div class="service-num">03/</div>
+                <h2>Technical Capacity & Architecture</h2>
+                <p>Developing concrete, actionable implementation toolkits, specialized framework standards, and training tools engineered to realign networks with contemporary legal and protection norms.</p>
             </div>
-            <div class="service-right">
-                <p>Professional mentoring for child protection and migration practitioners at inflection points — moving into technical advisory roles, leading regional portfolios for the first time, navigating the transition from field to headquarters, or building a career at the intersection of humanitarian and development work.</p>
-                <p>Mentoring engagements are individually tailored. They draw on <strong>twenty years of experience across three regions</strong> — including lessons from what went wrong, not only what worked.</p>
-            </div>
+
         </div>
     </div>
-</section>
+</main>
 
+<!-- FOOTER -->
 <footer>
     <div class="container">
         <div class="footer-inner">
