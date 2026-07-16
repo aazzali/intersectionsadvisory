@@ -4,11 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amanda Azzali - Intersections Advisory</title>
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Galatia:ital,wght=0,400;0,500;1,400;1,500&family=Inter:wght=300;400;500;600&display=swap" rel="stylesheet">
+    
     <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        /* Base Reset & Core Colors */
+        *, *::before, *::after { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+        }
 
         :root {
             --bg:           #F4F7F1; 
@@ -20,36 +28,89 @@
         }
 
         body {
-            background: var(--bg);
+            background-color: var(--bg);
             color: var(--text);
-            font-family: 'Inter', system-ui, sans-serif;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            line-height: 1.6;
         }
 
-        .container { max-width: 1080px; margin: 0 auto; padding: 0 2.5rem; width: 100%; }
+        .container { 
+            max-width: 1080px; 
+            margin: 0 auto; 
+            padding: 0 2rem; 
+            width: 100%; 
+        }
 
-        /* NAV STYLES */
+        /* Nav Styles */
         nav {
-            padding: 1.75rem 0;
+            padding: 1.5rem 0;
             border-bottom: 1px solid var(--divider);
-            background: var(--bg);
-            z-index: 100;
+            background-color: var(--bg);
         }
-        .nav-inner { display: flex; align-items: center; justify-content: space-between; }
-        .nav-mark { display: flex; align-items: center; gap: 0.65rem; text-decoration: none; }
-        .nav-cross { font-size: 1.1rem; color: var(--accent); font-weight: 300; line-height: 1; }
-        .nav-name { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text); }
-        .nav-links { list-style: none; display: flex; gap: 2.5rem; }
-        .nav-links a { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--secondary); text-decoration: none; }
-        .nav-links a:hover { color: var(--accent); }
+        .nav-inner { 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+        }
+        .nav-mark { 
+            display: flex; 
+            align-items: center; 
+            gap: 0.65rem; 
+            text-decoration: none; 
+        }
+        .nav-cross { 
+            font-size: 1.1rem; 
+            color: var(--accent); 
+            font-weight: 300; 
+        }
+        .nav-name { 
+            font-size: 0.75rem; 
+            font-weight: 600; 
+            letter-spacing: 0.18em; 
+            text-transform: uppercase; 
+            color: var(--text); 
+        }
+        .nav-links { 
+            list-style: none; 
+            display: flex; 
+            gap: 2rem; 
+        }
+        .nav-links a { 
+            font-size: 0.75rem; 
+            font-weight: 500; 
+            letter-spacing: 0.1em; 
+            text-transform: uppercase; 
+            color: var(--secondary); 
+            text-decoration: none; 
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { 
+            color: var(--accent); 
+        }
 
-        /* CONTENT LAYOUT */
-        .bio-section { flex: 1; padding: 6rem 0; }
+        /* Bio Content Styles */
+        .bio-section { 
+            flex: 1; 
+            padding: 5rem 0; 
+        }
+        .bio-content-wrapper {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .section-label { 
+            font-size: 0.68rem; 
+            font-weight: 600; 
+            letter-spacing: 0.22em; 
+            text-transform: uppercase; 
+            color: var(--accent); 
+            margin-bottom: 1rem; 
+        }
         .bio-text-side h1 {
             font-family: 'Cormorant Galatia', serif;
-            font-size: 3rem;
+            font-size: 2.8rem;
             font-weight: 400;
             line-height: 1.1;
             margin-bottom: 0.5rem;
@@ -60,7 +121,9 @@
             letter-spacing: 0.1em;
             text-transform: uppercase;
             color: var(--secondary);
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--divider);
+            padding-bottom: 1.5rem;
         }
         .bio-content p {
             font-size: 0.95rem;
@@ -69,85 +132,53 @@
             margin-bottom: 1.5rem;
         }
 
-        /* FOOTER */
-        footer { padding: 1.75rem 0; border-top: 1px solid var(--divider); background: var(--bg); }
-        .footer-inner { display: flex; justify-content: space-between; align-items: center; }
+        /* Footer */
+        footer { 
+            padding: 1.5rem 0; 
+            border-top: 1px solid var(--divider); 
+            background-color: var(--bg); 
+            font-size: 0.72rem;
+            color: var(--secondary);
+        }
+        .footer-inner { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
 
         /* =============================================== */
-        /* CINEMATIC SPLASH CURTAIN                        */
+        /* FULL-SCREEN IMAGE SPLASH OVERLAY                */
         /* =============================================== */
         #amanda-splash-curtain {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #141A10; /* Deep dark green/black */
-            color: #F4F7F1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 10000;
+            width: 100vw;
+            height: 100vh;
+            background-color: #141A10; /* Elegant dark backdrop */
+            z-index: 10000; /* Over everything */
+            display: block;
+            overflow: hidden;
             transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), visibility 1.2s;
             opacity: 1;
             visibility: visible;
         }
 
-        .splash-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            max-width: 400px;
-            width: 85%;
-            padding: 2.5rem;
-            background: #232E1C; 
-            border-radius: 6px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            animation: bubbleUp 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-        }
-
-        .splash-portrait {
+        /* Fills the screen with your portrait cleanly */
+        .splash-full-portrait {
             width: 100%;
-            max-width: 240px;
-            height: auto;
-            border-radius: 4px;
-            aspect-ratio: 3 / 4;
-            object-fit: cover;
-            border: 1px solid rgba(244, 247, 241, 0.15);
-            margin-bottom: 2rem;
+            height: 100%;
+            object-fit: cover; /* Crops cleanly on all screen sizes */
+            object-position: center 30%; /* Focuses on your face placement */
+            animation: elegantScale 3.5s ease-out forwards;
         }
 
-        .splash-cross {
-            font-size: 2.2rem;
-            font-weight: 300;
-            display: block;
-            color: #4A6B36; 
-            margin-bottom: 0.5rem;
+        /* Gentle cinematic zoom in as it plays */
+        @keyframes elegantScale {
+            0% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
 
-        .splash-title {
-            font-family: 'Cormorant Galatia', serif;
-            font-size: 2rem;
-            font-weight: 400;
-            letter-spacing: 0.12em;
-            margin-bottom: 0.4rem;
-        }
-
-        .splash-subtitle {
-            font-size: 0.72rem;
-            font-weight: 600;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: rgba(244, 247, 241, 0.6);
-        }
-
-        @keyframes bubbleUp {
-            0% { transform: scale(0.92) translateY(30px); opacity: 0; }
-            100% { transform: scale(1) translateY(0); opacity: 1; }
-        }
-
-        /* Hides curtain */
         #amanda-splash-curtain.hidden {
             opacity: 0;
             visibility: hidden;
@@ -157,16 +188,9 @@
 </head>
 <body>
 
-<!-- THE 3-SECOND SPLASH OVERLAY -->
+<!-- THE 3-SECOND FULL-SCREEN SPLASH OVERLAY -->
 <div id="amanda-splash-curtain">
-    <div class="splash-content">
-        <img src="amanda_portrait.jpg" alt="Amanda Azzali" class="splash-portrait">
-        <div>
-            <span class="splash-cross">+</span>
-            <h2 class="splash-title">Amanda Azzali</h2>
-            <p class="splash-subtitle">Senior Technical Consultant</p>
-        </div>
-    </div>
+    <img src="amanda_portrait.jpg" alt="Amanda Azzali" class="splash-full-portrait">
 </div>
 
 <!-- NAVIGATION BAR -->
@@ -191,13 +215,16 @@
 <!-- MAIN BIO CONTENT -->
 <main class="bio-section">
     <div class="container">
-        <div class="bio-text-side">
-            <h1>Amanda Azzali</h1>
-            <p class="bio-title">Senior Technical Consultant</p>
-            
-            <div class="bio-content">
-                <p>Providing senior-level technical expertise across complex humanitarian frameworks, child protection systems, and international migration contexts.</p>
-                <p>Dedicated to structural clarity, architectural alignment, and actionable legal standards within fast-moving operational landscapes globally.</p>
+        <div class="bio-content-wrapper">
+            <div class="bio-text-side">
+                <p class="section-label">Team Member Profile</p>
+                <h1>Amanda Azzali</h1>
+                <p class="bio-title">Senior Technical Consultant</p>
+                
+                <div class="bio-content">
+                    <p>Providing senior-level technical expertise across complex humanitarian frameworks, child protection systems, and international migration contexts.</p>
+                    <p>Dedicated to structural clarity, architectural alignment, and actionable legal standards within fast-moving operational landscapes globally.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -218,7 +245,7 @@
     window.addEventListener('DOMContentLoaded', function() {
         setTimeout(function() {
             document.getElementById('amanda-splash-curtain').classList.add('hidden');
-        }, 3000); // 3000ms = 3 seconds flat
+        }, 3000); // Fades out smoothly after 3 seconds
     });
 </script>
 
