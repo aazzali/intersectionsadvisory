@@ -416,6 +416,13 @@
         </div>
     </div>
 </footer>
-
+<script>
+    window.addEventListener('DOMContentLoaded', function() {
+        // Keeps curtain active for the animation sequence, then smoothly transitions to the content
+        setTimeout(function() {
+            document.getElementById('global-splash-curtain').classList.add('hidden');
+        }, 4400); 
+    });
+</script>
 </body>
 </html>
