@@ -95,7 +95,75 @@
     </style>
 </head>
 <body>
+<!-- THE 3-SECOND GLOBAL NETWORK SPLASH OVERLAY -->
+<div id="global-splash-curtain">
+    <div class="splash-map-wrapper">
+        <svg viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid meet" class="animated-network-map">
+            <defs>
+                <!-- Radial Glow Filter for the Nodes and Lines -->
+                <filter id="electric-glow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur stdDeviation="3" result="blur" />
+                    <feMerge>
+                        <feMergeNode in="blur" />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
+            </defs>
 
+            <!-- INTER-CONTINENTAL NETWORK LINES (Shoot across at Second 2) -->
+            <g class="network-lines">
+                <!-- North America to Europe -->
+                <path class="connection-line line-1" d="M 220,150 Q 330,110 460,130" />
+                <!-- North America to Asia -->
+                <path class="connection-line line-2" d="M 150,130 Q 50,80 800,110" />
+                <!-- Europe to Asia -->
+                <path class="connection-line line-3" d="M 480,130 Q 640,100 800,110" />
+                <!-- Europe to Africa -->
+                <path class="connection-line line-4" d="M 480,150 Q 470,220 480,290" />
+                <!-- Asia to Pacific/Australia -->
+                <path class="connection-line line-5" d="M 800,160 Q 780,250 770,330" />
+            </g>
+
+            <!-- WORLD MAP GEOMETRY (Dotted Node Grids) -->
+            <g class="world-regions">
+                <!-- North America Nodes -->
+                <g class="region NorthAmerica">
+                    <circle cx="150" cy="110" r="3" /><circle cx="190" cy="90" r="3" /><circle cx="260" cy="95" r="3" />
+                    <circle cx="280" cy="130" r="3" /><circle cx="220" cy="180" r="3" /><circle cx="200" cy="240" r="3" />
+                    <circle cx="160" cy="250" r="3" /><circle cx="150" cy="220" r="3" /><circle cx="110" cy="210" r="3" />
+                </g>
+                
+                <!-- Europe & Middle East Nodes -->
+                <g class="region EuropeMiddleEast">
+                    <circle cx="460" cy="110" r="3" /><circle cx="520" cy="105" r="3" /><circle cx="550" cy="140" r="3" />
+                    <circle cx="540" cy="190" r="3" /><circle cx="500" cy="210" r="3" /><circle cx="470" cy="220" r="3" />
+                    <circle cx="440" cy="200" r="3" /><circle cx="440" cy="150" r="3" />
+                </g>
+                
+                <!-- Africa Nodes -->
+                <g class="region Africa">
+                    <circle cx="440" cy="220" r="3" /><circle cx="490" cy="220" r="3" /><circle cx="530" cy="250" r="3" />
+                    <circle cx="540" cy="290" r="3" /><circle cx="510" cy="360" r="3" /><circle cx="480" cy="390" r="3" />
+                    <circle cx="460" cy="340" r="3" /><circle cx="430" cy="270" r="3" />
+                </g>
+                
+                <!-- Asia Nodes -->
+                <g class="region Asia">
+                    <circle cx="550" cy="110" r="3" /><circle cx="700" cy="90" r="3" /><circle cx="800" cy="110" r="3" />
+                    <circle cx="840" cy="160" r="3" /><circle cx="800" cy="220" r="3" /><circle cx="730" cy="240" r="3" />
+                    <circle cx="640" cy="250" r="3" /><circle cx="570" cy="220" r="3" />
+                </g>
+                
+                <!-- Pacific & Australia Nodes -->
+                <g class="region Pacific">
+                    <circle cx="740" cy="310" r="3" /><circle cx="790" cy="290" r="3" /><circle cx="830" cy="310" r="3" />
+                    <circle cx="810" cy="360" r="3" /><circle cx="750" cy="350" r="3" />
+                </g>
+            </g>
+        </svg>
+    </div>
+</div>
+    
 <nav>
     <div class="container">
         <div class="nav-inner">
