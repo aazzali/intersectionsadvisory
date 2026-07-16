@@ -92,6 +92,100 @@
     .nav-links { display: none !important; }
     .mobile-nav-select { display: block !important; }
         }
+        /* Dark Splash Backdrop */
+#global-splash-curtain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #080A0F; /* Deep tech midnight black */
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 1s cubic-bezier(0.25, 1, 0.5, 1), visibility 1s;
+    opacity: 1;
+    visibility: visible;
+}
+
+#global-splash-curtain.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.splash-map-wrapper {
+    width: 80%;
+    max-width: 1000px;
+}
+
+.animated-network-map {
+    width: 100%;
+    height: auto;
+}
+
+/* --- THE STAGED ANIMATION TIMINGS --- */
+
+/* Base State: Continent Nodes are dim grey points */
+.world-regions circle {
+    fill: rgba(255, 255, 255, 0.15);
+    transition: fill 0.8s ease, filter 0.8s ease;
+}
+
+/* Base State: Connection lines are hidden */
+.connection-line {
+    fill: none;
+    stroke: #FFFFFF;
+    stroke-width: 1.5;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    opacity: 0;
+    filter: url(#electric-glow);
+}
+
+/* SECOND 2: Connection lines shoot out and light up the paths */
+@keyframes shootLine {
+    0% {
+        stroke-dashoffset: 1000;
+        opacity: 0;
+    }
+    30% {
+        opacity: 1;
+    }
+    100% {
+        stroke-dashoffset: 0;
+        opacity: 0.8;
+    }
+}
+
+.connection-line {
+    animation: shootLine 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 1.2s; /* Triggers just after 1 second */
+}
+
+/* SECOND 3: Nodes pulse with intense Electric White */
+@keyframes electricPulse {
+    0% {
+        fill: rgba(255, 255, 255, 0.15);
+    }
+    100% {
+        fill: #FFFFFF;
+        filter: url(#electric-glow);
+    }
+}
+
+/* Specific regions light up in order */
+.NorthAmerica circle, .EuropeMiddleEast circle, .Africa circle, .Asia circle, .Pacific circle {
+    animation: electricPulse 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Sequential stagger for regional network activation */
+.NorthAmerica circle { animation-delay: 2s; }
+.EuropeMiddleEast circle { animation-delay: 2.2s; }
+.Asia circle { animation-delay: 2.4s; }
+.Africa circle { animation-delay: 2.6s; }
+.Pacific circle { animation-delay: 2.8s; }
     </style>
 </head>
 <body>
