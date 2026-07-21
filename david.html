@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>David Brickey Bloomer — Intersections Advisory</title>
+    <meta name="description" content="David Brickey Bloomer — senior humanitarian and child protection leader across Asia-Pacific and globally.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Galatia:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg:           #C8D8E8;
+            --surface:      #B0C5D8;
+            --text:         #1C1C1A;
+            --accent:       #3A5878;
+            --accent-hover: #2A4060;
+            --secondary:    #4A6070;
+            --divider:      #90AABF;
+        }
+
+        html { scroll-behavior: smooth; }
+        body { background: var(--bg); color: var(--text); font-family: 'Inter', system-ui, sans-serif; font-weight: 400; line-height: 1.6; font-size: 16px; }
+        .container { max-width: 1080px; margin: 0 auto; padding: 0 2.5rem; }
+
+        /* NAV */
+        nav { padding: 1.75rem 0; border-bottom: 1px solid var(--divider); position: sticky; top: 0; background: var(--bg); z-index: 100; }
+        .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+        .nav-mark { display: flex; align-items: center; gap: 0.65rem; text-decoration: none; }
+        .nav-cross { font-size: 1.1rem; color: var(--accent); font-weight: 300; line-height: 1; }
+        .nav-name { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text); }
+        .nav-links { list-style: none; display: flex; gap: 2rem; align-items: center; }
+        .nav-links > li { position: relative; }
+        .nav-links a { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--secondary); text-decoration: none; transition: color 0.2s; display: block; padding: 0.25rem 0; }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+        .nav-links .has-dropdown > a::after { content: ' ▾'; font-size: 0.6rem; }
+        .dropdown { display: none; position: absolute; top: calc(100% + 0.5rem); left: 0; background: var(--bg); border: 1px solid var(--divider); min-width: 160px; padding: 0.5rem 0; z-index: 200; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+        .dropdown a { padding: 0.5rem 1rem; white-space: nowrap; display: block; }
+        .has-dropdown:hover .dropdown, .has-dropdown.open .dropdown { display: block; }
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+        .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); transition: all 0.25s; }
+        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        .mobile-menu { display: none; flex-direction: column; background: var(--bg); border-top: 1px solid var(--divider); padding: 1rem 2.5rem 1.5rem; }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--secondary); text-decoration: none; padding: 0.6rem 0; border-bottom: 1px solid var(--divider); }
+        .mobile-menu a:last-child { border-bottom: none; }
+        .mobile-menu a:hover, .mobile-menu a.active { color: var(--accent); }
+        .mobile-menu .mobile-sub { padding-left: 1rem; font-size: 0.75rem; }
+
+        .hero { position: relative; overflow: hidden; padding: 7rem 0 6rem; }
+        .hero > .container { position: relative; z-index: 1; }
+        .hero-tree { position: absolute; right: -5%; bottom: -10%; height: 160%; width: auto; opacity: 0.20; pointer-events: none; user-select: none; }
+        .hero-eyebrow { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 2.25rem; }
+        .hero-headline { font-family: 'Cormorant Galatia', Georgia, serif; font-size: clamp(2.8rem, 6vw, 5.2rem); font-weight: 400; line-height: 1.08; color: var(--text); max-width: 780px; margin-bottom: 2.5rem; }
+        .hero-headline em { font-style: italic; color: var(--accent); }
+        .hero-sub { font-size: 0.9375rem; color: var(--secondary); max-width: 540px; line-height: 1.75; }
+
+        .coming-section { padding: 8rem 0; text-align: center; }
+        .coming-section h2 { font-family: 'Cormorant Galatia', serif; font-size: 2.5rem; font-weight: 400; margin-bottom: 1.5rem; color: var(--text); }
+        .coming-section p { font-size: 0.9rem; color: var(--secondary); line-height: 1.78; max-width: 480px; margin: 0 auto 2rem; }
+        .back-link { display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--divider); padding-bottom: 0.15rem; transition: border-color 0.2s; }
+        .back-link:hover { border-color: var(--accent); }
+
+        footer { padding: 1.75rem 0; border-top: 1px solid var(--divider); }
+        .footer-inner { display: flex; justify-content: space-between; align-items: center; }
+        .footer-mark { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--secondary); }
+        .footer-copy { font-size: 0.72rem; color: var(--secondary); }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="container">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-mark">
+                <span class="nav-cross">+</span>
+                <span class="nav-name">Intersections Advisory</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li class="has-dropdown">
+                    <a href="team.html" class="active">Team</a>
+                    <ul class="dropdown">
+                        <li><a href="amanda.html">Amanda</a></li>
+                        <li><a href="david.html" class="active">David</a></li>
+                    </ul>
+                </li>
+                <li><a href="articles.html">Articles</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="edges.html">Edges</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="team.html" class="active">Team</a>
+        <a href="amanda.html" class="mobile-sub">Team — Amanda</a>
+        <a href="david.html" class="mobile-sub active">Team — David</a>
+        <a href="articles.html">Articles</a>
+        <a href="contact.html">Contact</a>
+        <a href="edges.html">Edges</a>
+    </div>
+</nav>
+
+<!-- HERO with Japanese Maple -->
+<section class="hero">
+    <svg class="hero-tree" viewBox="0 0 420 680" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g fill="#3A5878" stroke="#3A5878" stroke-linecap="round" stroke-linejoin="round">
+        <!-- Japanese Maple: elegant trunk, delicate branching, lacy foliage -->
+        <!-- Trunk -->
+        <path fill="none" stroke-width="16" d="M 185 680 C 188 620 190 558 190 500 C 190 450 189 408 186 372 C 184 345 181 322 178 305"/>
+        <!-- Main fork at 305 -->
+        <!-- Left major branch -->
+        <path fill="none" stroke-width="10" d="M 178 305 C 160 280 138 252 112 222"/>
+        <path fill="none" stroke-width="7"  d="M 112 222 C 92 198 72 175 52 150"/>
+        <path fill="none" stroke-width="5"  d="M 52 150 C 36 130 22 110 10 88"/>
+        <!-- Left branch sub-split -->
+        <path fill="none" stroke-width="6"  d="M 112 222 C 100 195 92 165 88 135"/>
+        <path fill="none" stroke-width="4"  d="M 88 135 C 82 110 80 85 82 60"/>
+        <!-- Center-left branch -->
+        <path fill="none" stroke-width="9"  d="M 180 302 C 165 272 148 238 130 202"/>
+        <path fill="none" stroke-width="6"  d="M 130 202 C 118 172 108 140 102 108"/>
+        <path fill="none" stroke-width="4"  d="M 102 108 C 96 82 94 58 98 35"/>
+        <!-- Center branch going up -->
+        <path fill="none" stroke-width="8"  d="M 182 298 C 178 265 175 228 175 192"/>
+        <path fill="none" stroke-width="5"  d="M 175 192 C 172 162 172 130 175 100"/>
+        <path fill="none" stroke-width="3"  d="M 175 100 C 176 78 180 58 186 40"/>
+        <!-- Center-right branch -->
+        <path fill="none" stroke-width="9"  d="M 185 300 C 202 270 222 238 244 205"/>
+        <path fill="none" stroke-width="6"  d="M 244 205 C 260 178 275 148 285 118"/>
+        <path fill="none" stroke-width="4"  d="M 285 118 C 292 94 295 70 292 48"/>
+        <!-- Right major branch -->
+        <path fill="none" stroke-width="10" d="M 188 305 C 210 278 238 248 268 218"/>
+        <path fill="none" stroke-width="7"  d="M 268 218 C 292 192 315 165 335 138"/>
+        <path fill="none" stroke-width="5"  d="M 335 138 C 352 116 366 94 375 70"/>
+        <!-- Right branch sub-split -->
+        <path fill="none" stroke-width="6"  d="M 268 218 C 278 190 282 160 280 130"/>
+        <path fill="none" stroke-width="4"  d="M 280 130 C 278 106 280 82 285 60"/>
+
+        <!-- JAPANESE MAPLE LEAVES — deeply lobed, 5-7 points, small clusters -->
+        <!-- Each leaf cluster: star-like with pointed lobes -->
+
+        <!-- Cluster at (10, 85) -->
+        <g transform="translate(10,85) rotate(-15)">
+          <path fill="#3A5878" stroke="none" d="M0 0 C-3-8-2-16 0-20 C2-16 3-8 0 0Z"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-3-8-2-16 0-20 C2-16 3-8 0 0Z" transform="rotate(51.4)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-3-8-2-16 0-20 C2-16 3-8 0 0Z" transform="rotate(102.8)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-3-8-2-16 0-20 C2-16 3-8 0 0Z" transform="rotate(154.2)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-3-8-2-16 0-20 C2-16 3-8 0 0Z" transform="rotate(205.6)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-3-8-2-16 0-20 C2-16 3-8 0 0Z" transform="rotate(257.0)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-3-8-2-16 0-20 C2-16 3-8 0 0Z" transform="rotate(308.4)"/>
+        </g>
+        <!-- Cluster at (52,148) -->
+        <g transform="translate(52,148) rotate(10)">
+          <path fill="#3A5878" stroke="none" d="M0 0 C-4-10-3-20 0-25 C3-20 4-10 0 0Z" transform="rotate(0)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-4-10-3-20 0-25 C3-20 4-10 0 0Z" transform="rotate(51.4)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-4-10-3-20 0-25 C3-20 4-10 0 0Z" transform="rotate(102.8)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-4-10-3-20 0-25 C3-20 4-10 0 0Z" transform="rotate(154.2)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-4-10-3-20 0-25 C3-20 4-10 0 0Z" transform="rotate(205.6)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-4-10-3-20 0-25 C3-20 4-10 0 0Z" transform="rotate(257.0)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-4-10-3-20 0-25 C3-20 4-10 0 0Z" transform="rotate(308.4)"/>
+        </g>
+        <!-- Cluster at (82,58) -->
+        <g transform="translate(82,58) rotate(-25)">
+          <path fill="#3A5878" stroke="none" d="M0 0 C-3-8-2-16 0-20 C2-16 3-8 0 0Z" transform="rotate(0)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-3-8-2-16 0-20 C2-16 3-8 0 0Z" transform="rotate(51.4)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-3-8-2-16 0-20 C2-16 3-8 0 0Z" transform="rotate(102.8)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-3-8-2-16 0-20 C2-16 3-8 0 0Z" transform="rotate(154.2)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-3-8-2-16 0-20 C2-16 3-8 0 0Z" transform="rotate(205.6)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-3-8-2-16 0-20 C2-16 3-8 0 0Z" transform="rotate(257.0)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-3-8-2-16 0-20 C2-16 3-8 0 0Z" transform="rotate(308.4)"/>
+        </g>
+        <!-- Cluster at (98,33) -->
+        <g transform="translate(98,33) rotate(20)">
+          <path fill="#3A5878" stroke="none" d="M0 0 C-3-7-2-14 0-18 C2-14 3-7 0 0Z" transform="rotate(0)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-3-7-2-14 0-18 C2-14 3-7 0 0Z" transform="rotate(51.4)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-3-7-2-14 0-18 C2-14 3-7 0 0Z" transform="rotate(102.8)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-3-7-2-14 0-18 C2-14 3-7 0 0Z" transform="rotate(154.2)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-3-7-2-14 0-18 C2-14 3-7 0 0Z" transform="rotate(205.6)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-3-7-2-14 0-18 C2-14 3-7 0 0Z" transform="rotate(257.0)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-3-7-2-14 0-18 C2-14 3-7 0 0Z" transform="rotate(308.4)"/>
+        </g>
+        <!-- Cluster at (175,98) -->
+        <g transform="translate(175,98) rotate(-8)">
+          <path fill="#3A5878" stroke="none" d="M0 0 C-4-10-3-20 0-25 C3-20 4-10 0 0Z" transform="rotate(0)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-4-10-3-20 0-25 C3-20 4-10 0 0Z" transform="rotate(51.4)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-4-10-3-20 0-25 C3-20 4-10 0 0Z" transform="rotate(102.8)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-4-10-3-20 0-25 C3-20 4-10 0 0Z" transform="rotate(154.2)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-4-10-3-20 0-25 C3-20 4-10 0 0Z" transform="rotate(205.6)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-4-10-3-20 0-25 C3-20 4-10 0 0Z" transform="rotate(257.0)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-4-10-3-20 0-25 C3-20 4-10 0 0Z" transform="rotate(308.4)"/>
+        </g>
+        <!-- Cluster at (186,38) -->
+        <g transform="translate(186,38) rotate(5)">
+          <path fill="#3A5878" stroke="none" d="M0 0 C-4-10-3-20 0-25 C3-20 4-10 0 0Z" transform="rotate(0)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-4-10-3-20 0-25 C3-20 4-10 0 0Z" transform="rotate(51.4)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-4-10-3-20 0-25 C3-20 4-10 0 0Z" transform="rotate(102.8)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-4-10-3-20 0-25 C3-20 4-10 0 0Z" transform="rotate(154.2)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-4-10-3-20 0-25 C3-20 4-10 0 0Z" transform="rotate(205.6)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-4-10-3-20 0-25 C3-20 4-10 0 0Z" transform="rotate(257.0)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-4-10-3-20 0-25 C3-20 4-10 0 0Z" transform="rotate(308.4)"/>
+        </g>
+        <!-- Cluster at (285,116) -->
+        <g transform="translate(285,116) rotate(18)">
+          <path fill="#3A5878" stroke="none" d="M0 0 C-4-10-3-20 0-25 C3-20 4-10 0 0Z" transform="rotate(0)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-4-10-3-20 0-25 C3-20 4-10 0 0Z" transform="rotate(51.4)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-4-10-3-20 0-25 C3-20 4-10 0 0Z" transform="rotate(102.8)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-4-10-3-20 0-25 C3-20 4-10 0 0Z" transform="rotate(154.2)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-4-10-3-20 0-25 C3-20 4-10 0 0Z" transform="rotate(205.6)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-4-10-3-20 0-25 C3-20 4-10 0 0Z" transform="rotate(257.0)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-4-10-3-20 0-25 C3-20 4-10 0 0Z" transform="rotate(308.4)"/>
+        </g>
+        <!-- Cluster at (292,46) -->
+        <g transform="translate(292,46) rotate(-12)">
+          <path fill="#3A5878" stroke="none" d="M0 0 C-3-8-2-16 0-20 C2-16 3-8 0 0Z" transform="rotate(0)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-3-8-2-16 0-20 C2-16 3-8 0 0Z" transform="rotate(51.4)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-3-8-2-16 0-20 C2-16 3-8 0 0Z" transform="rotate(102.8)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-3-8-2-16 0-20 C2-16 3-8 0 0Z" transform="rotate(154.2)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-3-8-2-16 0-20 C2-16 3-8 0 0Z" transform="rotate(205.6)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-3-8-2-16 0-20 C2-16 3-8 0 0Z" transform="rotate(257.0)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-3-8-2-16 0-20 C2-16 3-8 0 0Z" transform="rotate(308.4)"/>
+        </g>
+        <!-- Cluster at (335,136) -->
+        <g transform="translate(335,136) rotate(22)">
+          <path fill="#3A5878" stroke="none" d="M0 0 C-4-10-3-20 0-25 C3-20 4-10 0 0Z" transform="rotate(0)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-4-10-3-20 0-25 C3-20 4-10 0 0Z" transform="rotate(51.4)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-4-10-3-20 0-25 C3-20 4-10 0 0Z" transform="rotate(102.8)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-4-10-3-20 0-25 C3-20 4-10 0 0Z" transform="rotate(154.2)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-4-10-3-20 0-25 C3-20 4-10 0 0Z" transform="rotate(205.6)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-4-10-3-20 0-25 C3-20 4-10 0 0Z" transform="rotate(257.0)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-4-10-3-20 0-25 C3-20 4-10 0 0Z" transform="rotate(308.4)"/>
+        </g>
+        <!-- Cluster at (375,68) -->
+        <g transform="translate(375,68) rotate(-5)">
+          <path fill="#3A5878" stroke="none" d="M0 0 C-3-8-2-16 0-20 C2-16 3-8 0 0Z" transform="rotate(0)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-3-8-2-16 0-20 C2-16 3-8 0 0Z" transform="rotate(51.4)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-3-8-2-16 0-20 C2-16 3-8 0 0Z" transform="rotate(102.8)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-3-8-2-16 0-20 C2-16 3-8 0 0Z" transform="rotate(154.2)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-3-8-2-16 0-20 C2-16 3-8 0 0Z" transform="rotate(205.6)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-3-8-2-16 0-20 C2-16 3-8 0 0Z" transform="rotate(257.0)"/>
+          <path fill="#3A5878" stroke="none" d="M0 0 C-3-8-2-16 0-20 C2-16 3-8 0 0Z" transform="rotate(308.4)"/>
+        </g>
+      </g>
+    </svg>
+
+    <div class="container">
+        <p class="hero-eyebrow">Portfolio</p>
+        <h1 class="hero-headline">
+            Senior humanitarian leader. Child protection across <em>three decades</em> and three regions.
+        </h1>
+        <p class="hero-sub">
+            Director-level experience across Asia-Pacific and globally — integrated programming, policy, advocacy, and the centrality of protection in complex crisis settings.
+        </p>
+    </div>
+</section>
+
+<hr class="rule">
+
+<section class="coming-section">
+    <div class="container">
+        <p class="section-label">Portfolio</p>
+        <h2>Coming soon.</h2>
+        <p>David's full portfolio page is being prepared. In the meantime, visit the Team page for an overview of his expertise and how it combines with Amanda's.</p>
+        <a href="team.html" class="back-link">View the team →</a>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-inner">
+            <span class="footer-mark">+ Intersections Advisory</span>
+            <span class="footer-copy">© 2026 Intersections Advisory</span>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('open');
+        mobileMenu.classList.toggle('open');
+    });
+    document.querySelectorAll('.has-dropdown').forEach(item => {
+        item.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) return;
+            item.classList.toggle('open');
+            e.stopPropagation();
+        });
+    });
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.has-dropdown.open').forEach(item => {
+            item.classList.remove('open');
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amanda Azzali - Intersections Advisory</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Galatia:ital,wght=0,400;0,500;1,400;1,500&family=Inter:wght=300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Base Reset & Core Colors */
+        *, *::before, *::after { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+        }
+
+        :root {
+            --bg:           #EAD8F2; 
+            --surface:      #DFC3ED; 
+            --text:         #2A1F30; 
+            --accent:       #8B4F9E; 
+            --accent-hover: #6B3A7A;
+            --secondary:    #7A6580;
+            --divider:      #D8BEE0;
+        }
+
+        /* NAV */
+        nav { padding: 1.75rem 0; border-bottom: 1px solid var(--divider); position: sticky; top: 0; background: var(--bg); z-index: 100; }
+        .container { max-width: 1080px; margin: 0 auto; padding: 0 2.5rem; }
+        .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+        .nav-mark { display: flex; align-items: center; gap: 0.65rem; text-decoration: none; }
+        .nav-cross { font-size: 1.1rem; color: var(--accent); font-weight: 300; line-height: 1; }
+        .nav-name { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text); }
+        .nav-links { list-style: none; display: flex; gap: 2rem; align-items: center; }
+        .nav-links > li { position: relative; }
+        .nav-links a { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--secondary); text-decoration: none; transition: color 0.2s; display: block; padding: 0.25rem 0; }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+        .nav-links .has-dropdown > a::after { content: ' ▾'; font-size: 0.6rem; }
+        .dropdown { display: none; position: absolute; top: calc(100% + 0.5rem); left: 0; background: var(--bg); border: 1px solid var(--divider); min-width: 160px; padding: 0.5rem 0; z-index: 200; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+        .dropdown a { padding: 0.5rem 1rem; white-space: nowrap; display: block; }
+        .has-dropdown:hover .dropdown, .has-dropdown.open .dropdown { display: block; }
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+        .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); transition: all 0.25s; }
+        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        .mobile-menu { display: none; flex-direction: column; background: var(--bg); border-top: 1px solid var(--divider); padding: 1rem 2.5rem 1.5rem; }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--secondary); text-decoration: none; padding: 0.6rem 0; border-bottom: 1px solid var(--divider); }
+        .mobile-menu a:last-child { border-bottom: none; }
+        .mobile-menu a:hover, .mobile-menu a.active { color: var(--accent); }
+        .mobile-menu .mobile-sub { padding-left: 1rem; font-size: 0.75rem; }
+        @media (max-width: 768px) { .nav-links { display: none; } .hamburger { display: flex; } .hero-maracuja { height: 90%; right: -20%; bottom: -5%; } }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.6;
+        }
+
+        /* Bio Content Styles */
+        .bio-section { 
+            flex: 1; 
+            padding: 5rem 0; 
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-maracuja {
+            position: absolute;
+            right: -2%;
+            bottom: -8%;
+            height: 120%;
+            width: auto;
+            opacity: 0.16;
+            pointer-events: none;
+            user-select: none;
+        }
+        .bio-content-wrapper {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .section-label { 
+            font-size: 0.68rem; 
+            font-weight: 600; 
+            letter-spacing: 0.22em; 
+            text-transform: uppercase; 
+            color: var(--accent); 
+            margin-bottom: 1rem; 
+        }
+        .bio-text-side h1 {
+            font-family: 'Cormorant Galatia', serif;
+            font-size: 2.8rem;
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+        }
+        .bio-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--secondary);
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--divider);
+            padding-bottom: 1.5rem;
+        }
+        .bio-content p {
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Footer */
+        footer { 
+            padding: 1.5rem 0; 
+            border-top: 1px solid var(--divider); 
+            background-color: var(--bg); 
+            font-size: 0.72rem;
+            color: var(--secondary);
+        }
+        .footer-inner { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+
+        #amanda-splash-curtain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #141A10; /* Elegant dark backdrop */
+            z-index: 10000; /* Over everything */
+            display: block;
+            overflow: hidden;
+            transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), visibility 1.2s;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .splash-full-portrait {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Crops cleanly on all screen sizes */
+            object-position: center 30%; /* Focuses on your face placement */
+            animation: elegantScale 3.5s ease-out forwards;
+        }
+
+        @keyframes elegantScale {
+            0% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        #amanda-splash-curtain.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+<!-- THE 3-SECOND FULL-SCREEN SPLASH OVERLAY -->
+<div id="amanda-splash-curtain">
+    <img src="amanda_portrait.jpg" alt="Amanda Azzali" class="splash-full-portrait">
+</div>
+
+<nav>
+    <div class="container">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-mark">
+                <span class="nav-cross">+</span>
+                <span class="nav-name">Intersections Advisory</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li class="has-dropdown">
+                    <a href="team.html" class="active">Team</a>
+                    <ul class="dropdown">
+                        <li><a href="amanda.html" class="active">Amanda</a></li>
+                        <li><a href="david.html">David</a></li>
+                    </ul>
+                </li>
+                <li><a href="articles.html">Articles</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="edges.html">Edges</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="team.html" class="active">Team</a>
+        <a href="amanda.html" class="mobile-sub active">Team — Amanda</a>
+        <a href="david.html" class="mobile-sub">Team — David</a>
+        <a href="articles.html">Articles</a>
+        <a href="contact.html">Contact</a>
+        <a href="edges.html">Edges</a>
+    </div>
+</nav>
+
+<!-- MAIN BIO CONTENT -->
+<main class="bio-section">
+    <svg class="hero-maracuja" viewBox="0 0 420 680" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g fill="#8B4F9E" stroke="#8B4F9E" stroke-linecap="round" stroke-linejoin="round">
+        <path fill="none" stroke-width="6" d="M 230 680 C 215 610 240 555 220 490 C 205 435 232 380 215 320 C 200 265 228 210 210 155 C 198 115 212 75 205 30"/>
+        <path fill="none" stroke-width="3" d="M 220 490 C 250 480 260 455 245 440 C 260 448 268 428 255 418"/>
+        <path fill="none" stroke-width="3" d="M 210 155 C 175 148 165 122 182 108 C 165 115 155 95 170 84"/>
+        <path d="M 195 560 C 185 540 200 525 220 540 C 235 522 258 535 250 555 C 262 568 248 588 228 580 C 218 595 195 588 195 570 Z" opacity="0.85"/>
+        <path d="M 245 400 C 235 380 250 365 270 380 C 285 362 308 375 300 395 C 312 408 298 428 278 420 C 268 435 245 428 245 410 Z" opacity="0.85"/>
+        <path d="M 178 245 C 168 225 183 210 203 225 C 218 207 241 220 233 240 C 245 253 231 273 211 265 C 201 280 178 273 178 255 Z" opacity="0.85"/>
+        <g>
+          <path fill="none" stroke-width="2" opacity="0.6" d="M 205 155 L 205 90"/>
+          <path fill="none" stroke-width="2" opacity="0.6" d="M 205 155 L 165 110"/>
+          <path fill="none" stroke-width="2" opacity="0.6" d="M 205 155 L 245 110"/>
+          <path fill="none" stroke-width="2" opacity="0.6" d="M 205 155 L 155 155"/>
+          <path fill="none" stroke-width="2" opacity="0.6" d="M 205 155 L 255 155"/>
+          <path fill="none" stroke-width="2" opacity="0.6" d="M 205 155 L 170 195"/>
+          <path fill="none" stroke-width="2" opacity="0.6" d="M 205 155 L 240 195"/>
+          <path fill="none" stroke-width="2" opacity="0.6" d="M 205 155 L 190 205"/>
+          <path fill="none" stroke-width="2" opacity="0.6" d="M 205 155 L 220 205"/>
+          <ellipse cx="205" cy="118" rx="14" ry="26" opacity="0.9"/>
+          <ellipse cx="205" cy="118" rx="14" ry="26" transform="rotate(72 205 155)" opacity="0.9"/>
+          <ellipse cx="205" cy="118" rx="14" ry="26" transform="rotate(144 205 155)" opacity="0.9"/>
+          <ellipse cx="205" cy="118" rx="14" ry="26" transform="rotate(216 205 155)" opacity="0.9"/>
+          <ellipse cx="205" cy="118" rx="14" ry="26" transform="rotate(288 205 155)" opacity="0.9"/>
+          <circle cx="205" cy="155" r="9"/>
+        </g>
+      </g>
+    </svg>
+
+    <div class="container">
+        <div class="bio-content-wrapper">
+            <div class="bio-text-side">
+                <p class="section-label">Team Member Profile</p>
+                <h1>Amanda Azzali</h1>
+                <p class="bio-title">Senior Technical Consultant</p>
+                
+                <div class="bio-content">
+                    <p>Providing senior-level technical expertise across complex humanitarian frameworks, child protection systems, and international migration contexts.</p>
+                    <p>Dedicated to structural clarity, architectural alignment, and actionable legal standards within fast-moving operational landscapes globally.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-inner">
+            <span>+ Intersections Advisory</span>
+            <span>© 2026 Intersections Advisory</span>
+        </div>
+    </div>
+</footer>
+
+<!-- AUTO TIMER SCRIPT -->
+<script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('open');
+        mobileMenu.classList.toggle('open');
+    });
+    document.querySelectorAll('.has-dropdown').forEach(item => {
+        item.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) return;
+            item.classList.toggle('open');
+            e.stopPropagation();
+        });
+    });
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.has-dropdown.open').forEach(item => {
+            item.classList.remove('open');
+        });
+    });
+</script>
+<script>
+    window.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+            document.getElementById('amanda-splash-curtain').classList.add('hidden');
+        }, 3000); // Fades out smoothly after 3 seconds
+    });
+</script>
+
+</body>
+</html>

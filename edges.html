@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edges - Intersections Advisory</title>
+    <meta name="description" content="Explore the ideas, frameworks, and texts that inform our perspective at Intersections Advisory.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Galatia:ital,wght=0,400;0,500;1,400;1,500&family=Inter:wght=300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg:           #1A1A18; 
+            --surface:      #242422; 
+            --text:         #EDEDE9; 
+            --accent:       #B5651D; 
+            --accent-hover: #8C4F16;
+            --secondary:    #9C9488;
+            --divider:      #38372F;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', system-ui, sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            font-size: 16px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container { max-width: 1080px; margin: 0 auto; padding: 0 2.5rem; width: 100%; }
+
+        /* NAV */
+        nav {
+            padding: 1.75rem 0;
+            border-bottom: 1px solid var(--divider);
+            background: var(--bg);
+            z-index: 100;
+        }
+        .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+        .nav-mark { display: flex; align-items: center; gap: 0.65rem; text-decoration: none; }
+        .nav-cross { font-size: 1.1rem; color: var(--accent); font-weight: 300; line-height: 1; }
+        .nav-name { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text); }
+        .nav-links { list-style: none; display: flex; gap: 2.5rem; }
+        .nav-links a { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--secondary); text-decoration: none; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--accent); }
+
+        .nav-links > li { position: relative; }
+        .nav-links a.active { color: var(--accent); }
+        .nav-links .has-dropdown > a::after { content: ' ▾'; font-size: 0.6rem; }
+        .dropdown { display: none; position: absolute; top: calc(100% + 0.5rem); left: 0; background: var(--bg); border: 1px solid var(--divider); min-width: 160px; padding: 0.5rem 0; z-index: 200; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+        .dropdown a { padding: 0.5rem 1rem; white-space: nowrap; display: block; }
+        .has-dropdown:hover .dropdown, .has-dropdown.open .dropdown { display: block; }
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+        .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); transition: all 0.25s; }
+        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        .mobile-menu { display: none; flex-direction: column; background: var(--bg); border-top: 1px solid var(--divider); padding: 1rem 2.5rem 1.5rem; }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--secondary); text-decoration: none; padding: 0.6rem 0; border-bottom: 1px solid var(--divider); }
+        .mobile-menu a:last-child { border-bottom: none; }
+        .mobile-menu a:hover, .mobile-menu a.active { color: var(--accent); }
+        .mobile-menu .mobile-sub { padding-left: 1rem; font-size: 0.75rem; }
+
+        /* MAIN CONTENT AREA WITH BANYAN SILHOUETTE */
+        .main-content { 
+            position: relative; 
+            overflow: hidden; 
+            padding: 6rem 0 8rem 0; 
+            flex: 1;
+        }
+
+        /* HERO HEADER BLOCK */
+        .inspiration-header { max-width: 650px; margin-bottom: 5rem; position: relative; z-index: 2; }
+        .section-label { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 2.5rem; display: flex; align-items: center; gap: 0.9rem; }
+        .section-label::after { content: ''; display: block; height: 1px; width: 2.5rem; background: var(--accent); opacity: 0.35; }
+        .inspiration-header h1 { font-family: 'Cormorant Galatia', serif; font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 400; line-height: 1.15; }
+
+        /* MATERIAL LIST LAYOUT */
+        .materials-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 3.5rem 2.5rem; position: relative; z-index: 2; }
+        .material-card { display: flex; flex-direction: column; align-items: flex-start; }
+        .material-meta { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem; }
+        .material-title { font-family: 'Cormorant Galatia', serif; font-size: 1.5rem; font-weight: 500; line-height: 1.25; margin-bottom: 0.6rem; color: var(--text); text-decoration: none; }
+        .material-title[href]:hover { text-decoration: underline; color: var(--accent-hover); }
+        .material-desc { font-size: 0.9rem; color: var(--secondary); line-height: 1.6; }
+
+        /* FOOTER */
+        footer { padding: 1.75rem 0; border-top: 1px solid var(--divider); background: var(--bg); }
+        .footer-inner { display: flex; justify-content: space-between; align-items: center; }
+        .footer-mark { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--secondary); }
+        .footer-copy { font-size: 0.72rem; color: var(--secondary); }
+
+        /* RESPONSIVE SCALING */
+        @media (max-width: 768px) {
+            .container { padding: 0 1.5rem; }
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .inspiration-header { margin-bottom: 3.5rem; }
+            .materials-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .footer-inner { flex-direction: column; gap: 0.4rem; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="container">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-mark">
+                <span class="nav-cross">+</span>
+                <span class="nav-name">Intersections Advisory</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li class="has-dropdown">
+                    <a href="team.html">Team</a>
+                    <ul class="dropdown">
+                        <li><a href="amanda.html">Amanda</a></li>
+                        <li><a href="david.html">David</a></li>
+                    </ul>
+                </li>
+                <li><a href="articles.html">Articles</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="edges.html" class="active">Edges</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="team.html">Team</a>
+        <a href="amanda.html" class="mobile-sub">Team — Amanda</a>
+        <a href="david.html" class="mobile-sub">Team — David</a>
+        <a href="articles.html">Articles</a>
+        <a href="contact.html">Contact</a>
+        <a href="edges.html" class="active">Edges</a>
+    </div>
+</nav>
+
+<main class="main-content">
+    <div class="container">
+        <div class="inspiration-header">
+            <p class="section-label">Related Material</p>
+            <h1>What lands us at the intersection.</h1>
+        </div>
+
+        <div class="materials-grid">
+            <div class="material-card">
+                <span class="material-meta">Book / Photography &amp; Poetry</span>
+                <a href="https://it.blurb.com/b/12932352-waiting-on-the-elephants" target="_blank" class="material-title">Waiting on the Elephant</a>
+                <p class="material-desc">David's collection of poetry and photography drawn from years of field work — a personal register alongside the technical.</p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-inner">
+            <span class="footer-mark">+ Intersections Advisory</span>
+            <span class="footer-copy">© 2026 Intersections Advisory</span>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('open');
+        mobileMenu.classList.toggle('open');
+    });
+    document.querySelectorAll('.has-dropdown').forEach(item => {
+        item.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) return;
+            item.classList.toggle('open');
+            e.stopPropagation();
+        });
+    });
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.has-dropdown.open').forEach(item => {
+            item.classList.remove('open');
+        });
+    });
+</script>
+
+</body>
+</html>
